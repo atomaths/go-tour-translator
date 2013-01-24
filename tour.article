@@ -131,6 +131,7 @@ Inside a function, the `:=` short assignment statement can be used in place of a
 * Constants (상수)
 
 상수는 변수처럼 선언한다. 대신 `const`라는 키워드와 같이 사용한다.
+
 상수는 문자, 문자열, 부울, 숫자일 수 있다.
 
 .play prog/constants.go
