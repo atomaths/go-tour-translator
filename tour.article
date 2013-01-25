@@ -106,25 +106,25 @@ If the result parameters are named, a `return` statement without arguments retur
 
 .play prog/named-results.go
 
-* Variables
+* 변수 (Variables)
 
-The `var` statement declares a list of variables; as in function argument lists, the type is last.
+`var` 문장은 변수를 선언합니다. 함수의 매개변수 처럼 타입은 문장 끝에 명시합니다.
 
 .play prog/variables.go
 
-* Variables with initializers
+* 변수의 초기화
 
-A var declaration can include initializers, one per variable.
+변수 선언과 함께 변수 마다 초기화를 할 수 있습니다.
 
-If an initializer is present, the type can be omitted; the variable will take the type of the initializer.
+초기화를 하는 경우 타입(type)을 생략할 수 있습니다. 변수는 초기화 하고자 하는 값에 따라 타입이 결정됩니다.
 
 .play prog/variables-with-initializers.go
 
-* Short variable declarations
+* 변수의 짧은 선언
 
-Inside a function, the `:=` short assignment statement can be used in place of a `var` declaration with implicit type.
+함수 내에서 `:=` 할당을 `var`과 명시적인 타입(e.g. int, bool) 선언 대신 사용할 수 있습니다.
 
-(Outside a function, every construct begins with a keyword and the `:=` construct is not available.)
+(함수 밖의 모든 문장의 구조는 키워드로 시작하고, `:=` 선언은 사용할 수 없습니다.)
 
 .play prog/short-variable-declarations.go
 
