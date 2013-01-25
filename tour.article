@@ -121,7 +121,7 @@ Go에서는 첫 문자가 대문자로 시작하면 그 패키지를 사용하�
 
 * 변수의 짧은 선언
 
-함수 내에서 `:=` 을 `var`과 명시적인 타입(e.g. int, bool) 선언 대신 사용할 수 있습니다.
+함수 내에서 `:=` 을 `var` 과 명시적인 타입(e.g. int, bool) 선언 대신 사용할 수 있습니다.
 
 (함수 밖의 모든 문장의 구조는 키워드로 시작하고, `:=` 선언은 사용할 수 없습니다.)
 
@@ -545,9 +545,9 @@ _이를_위해_명시적으로_선언할_게_없습니다._
 
 .play prog/errors.go
 
-* Web servers
+* 웹 서버
 
-[[http://golang.org/pkg/net/http/][Package http]] serves HTTP requests using any value that implements `http.Handler`:
+[[http://golang.org/pkg/net/http/][http 패키지]]는 `http.Handler` 를 구현한 값을 사용하여 HTTP requests를 제공합니다.:
 
 	package http
 	
@@ -555,9 +555,9 @@ _이를_위해_명시적으로_선언할_게_없습니다._
 		ServeHTTP(w ResponseWriter, r *Request)
 	}
 
-In this example, the type `Hello` implements `http.Handler`.
+왼쪽의 코드를 보면 `http.Handler` 를 구현한 타입 `Hello` 를 확인할 수 있습니다.
 
-Visit [[http://localhost:4000/][http://localhost:4000/]] to see the greeting.
+결과를 보기 위해 [[http://localhost:4000/][http://localhost:4000/]] 에 접속해보세요.
 
 .play prog/web-servers.go
 
