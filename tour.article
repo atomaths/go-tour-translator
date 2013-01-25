@@ -217,17 +217,17 @@ Go 언어의 기본 자료형은 다음과 같습니다
 
 .play prog/basic-types.go
 
-* Structs
+* 구조체
 
-A `struct` is a collection of fields.
+`구조체`는 데이터들의 묶음입니다.
 
-(And a `type` declaration does what you'd expect.)
+(구조체 안의 데이터들의  `자료형`은 원하는대로 하면 됩니다.)
 
 .play prog/structs.go
 
-* Struct Fields
+* 구조체의 데이터
 
-Struct fields are accessed using a dot.
+구조체가 포함한 데이터들은 `.`을 이용하여 사용할 수 있습니다.
 
 .play prog/struct-fields.go
 
