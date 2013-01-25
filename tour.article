@@ -787,3 +787,4 @@ Then read and print 10 values from the channel. It should be the numbers 1, 2, 3
 
 공식 사이트 [[http://golang.org][golang.org]]를 방문해 더 살펴보세요.
 
+번역: [[https://developers.google.com/groups/chapter/112714242728066184635/][한국 Go 언어 커뮤니티(GDG Golang Korea)]
