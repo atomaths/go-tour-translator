@@ -195,9 +195,9 @@ Variables declared inside an `if`'s short statement are also available inside an
 
 .play prog/if-and-else.go
 
-* Basic types
+* 기본 자료형
 
-Go's basic types are
+Go 언어의 기본 자료형은 다음과 같습니다
 
 	bool
 	
@@ -206,10 +206,10 @@ Go's basic types are
 	int  int8  int16  int32  int64
 	uint uint8 uint16 uint32 uint64 uintptr
 	
-	byte // alias for uint8
+	byte // uint8의 다른 이름
 	
-	rune // alias for int32
-	     // represents a Unicode code point
+	rune // int32의 다른 이름
+	     // 유니코드 코드 포인트 값으로 표현됩니다. 
 	
 	float32 float64
 	
