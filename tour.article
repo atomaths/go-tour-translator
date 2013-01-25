@@ -67,7 +67,7 @@ Run the code. Then rename `math.pi` to `math.Pi` and try it again.
 
 함수는 매개변수(인자)를 취할 수 있습니다.
 
-예를 들어 `add`라는 함수는 두개의 `int` 타입 매개변수를 받습니다.
+예를 들어 `add` 라는 함수는 두개의 `int` 타입 매개변수를 받습니다.
 
 매개변수의 타입은 변수명 _뒤에_ 명시합니다.
 
@@ -123,7 +123,7 @@ Run the code. Then rename `math.pi` to `math.Pi` and try it again.
 
 * 변수의 짧은 선언
 
-함수 내에서 `:=` 을 `var`과 명시적인 타입(e.g. int, bool) 선언 대신 사용할 수 있습니다.
+함수 내에서 `:=` 을 `var` 과 명시적인 타입(e.g. int, bool) 선언 대신 사용할 수 있습니다.
 
 (함수 밖의 모든 문장의 구조는 키워드로 시작하고, `:=` 선언은 사용할 수 없습니다.)
 
@@ -539,9 +539,9 @@ The `fmt` package's various print routines automatically know to call the method
 
 .play prog/errors.go
 
-* Web servers
+* 웹 서버
 
-[[http://golang.org/pkg/net/http/][Package http]] serves HTTP requests using any value that implements `http.Handler`:
+[[http://golang.org/pkg/net/http/][http 패키지]]는 `http.Handler` 를 구현한 값을 사용하여 HTTP requests를 제공합니다.:
 
 	package http
 	
@@ -549,9 +549,10 @@ The `fmt` package's various print routines automatically know to call the method
 		ServeHTTP(w ResponseWriter, r *Request)
 	}
 
-In this example, the type `Hello` implements `http.Handler`.
+왼쪽의 코드를 보면 `http.Handler` 를 구현한 타입 `Hello` 를 확인할 수 있습니다.
 
-Visit [[http://localhost:4000/][http://localhost:4000/]] to see the greeting.
+결과를 보기 위해 [[http://localhost:4000/][http://localhost:4000/]] 에 접속해보세요.
+
 
 .play prog/web-servers.go
 
