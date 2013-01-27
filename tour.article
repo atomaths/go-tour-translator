@@ -32,13 +32,13 @@ http://golang.org
 
 * Packages
 
-Every Go program is made up of packages.
+모든 Go 프로그램은 패키지로 구성되어 있습니다.
 
-Programs start running in package `main`.
+프로그램은 `main` 패키지에서부터 실행을 시작합니다.
 
-This program is using the packages with import paths `"fmt"` and `"math"`.
+이 프로그램은 `"fmt"`와 `"math"` 패키지를 import 해서 사용하고 있습니다.
 
-By convention, the package name is the same as the last element of the import path.
+관례상, 패키지명은 import할 패키지의 디렉토리 경로에서 제일 마지막 부분이 됩니다.
 
 .play prog/packages.go
 
