@@ -173,25 +173,26 @@ Go에서 세미콜론 ; 을 사용하지 않은 for문은 C에서의 while 반�
 
 * If
 
-The `if` statement looks as it does in C or Java, except that the `(`)` are gone (they are not even optional) and the `{`}` are required.
+`if` 조건문은 C, Java 언어와 비슷합니다. 하지만 소괄호 `(`)`는 사용하지 않습니다. 하지만 `{`}`는 필요합니다.
 
-(Sound familiar?)
+어디서 들어본 것 같지 않나요?
+
 
 .play prog/if.go
 
-* If with a short statement
+* If와 간단한 명령문의 사용
 
-Like `for`, the `if` statement can start with a short statement to execute before the condition.
+`for`와 같이 `if`조건문은 조건에 따른 결과를 실행하기 전에 예제의 `v := math.Pow(x,n)`과 같은 짧은 명령문을 사용할 수 있습니다.
 
-Variables declared by the statement are only in scope until the end of the `if`.
+`if`문에서 선언된 변수는 `if`문안에서만 사용 할 수 있습니다.
 
-(Try using `v` in the last `return` statement.)
+(마지막 `return` 문장의 `lim`을  `v`로 바꿔 보세요.)
 
 .play prog/if-with-a-short-statement.go
 
 * If and else
 
-Variables declared inside an `if`'s short statement are also available inside any of the `else` blocks.
+`if`의 간단한 명령문에서 선언된 변수는 `else`의 블럭 안에서도 사용할 수 있습니다.
 
 .play prog/if-and-else.go
 
