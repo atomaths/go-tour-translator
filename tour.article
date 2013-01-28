@@ -250,15 +250,17 @@ The special prefix `&` constructs a pointer to a struct literal.
 
 .play prog/struct-literals.go
 
-* The new function
+* new 함수
 
-The expression `new(T)` allocates a zeroed `T` value and returns a pointer to it.
+구문 `new(T)` 는 `T`라는 빈공간을 가진 변수를 할당 하고, `T`의 포인터를 반환합니다. 
 
 	var t *T = new(T)
 
-or
+또는
 
 	t := new(T)
+
+위의 변수 t는 `T` 에서 반환된 포인터를 가집니다.
 
 .play prog/the-new-function.go
 
