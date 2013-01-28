@@ -690,19 +690,19 @@ _고루틴_은 Go 런타임에 의해 관리되는 경량 쓰레드입니다.
 
 .play prog/buffered-channels.go
 
-* Range and Close
+* Range와 Close
 
-A sender can `close` a channel to indicate that no more values will be sent. Receivers can test whether a channel has been closed by assigning a second parameter to the receive expression: after
+데이터 송신측은 더이상 보낼 값이 없다는 것을 알리기 위해 채널을 `close`할 수 있습니다. 수신측은 다음과 같이 수신 코드에 두번째 인자를 줌으로써 채널이 닫혔는지 테스트 할 수 있습니다.
 
 	v, ok := <-ch
 
-`ok` is `false` if there are no more values to receive and the channel is closed.
+채널이 이미 닫혔고 더이상 받을 값이 없다면 `ok`는 `false`가 됩니다.
 
-The loop `for`i`:=`range`c` receives values from the channel repeatedly until it is closed.
+`for`i`:=`range`c` 반복문은 채널이 닫힐 때까지 계속해서 값을 받습니다.
 
-*Note:* Only the sender should close a channel, never the receiver. Sending on a closed channel will cause a panic.
+*주의:* 송신측만 채널을 닫을 수 있습니다. 수신측에선 불가능합니다. 이미 닫힌 채널에 데이터를 보내면 패닉이 일어납니다.
 
-*Another*note*: Channels aren't like files; you don't usually need to close them. Closing is only necessary when the receiver must be told there are no more values coming, such as to terminate a `range` loop.
+*또하나의*주의*: 채널은 파일과 다릅니다; 항상 닫을 필요는 없습니다. 채널을 닫는 행위는 오로지 수신측에게 더이상 보낼 값이 없다고 말해야 할때만 행해지면 됩니다. `range` 루프를 종료시켜야 할 때처럼요.
 
 .play prog/range-and-close.go
 
