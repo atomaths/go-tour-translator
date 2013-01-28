@@ -310,9 +310,9 @@ Similarly, when reading from a map if the key is not present the result is the z
 
 * Slices
 
-A slice points to an array of values and also includes a length.
+Slice는 값들의 배열을 가리키는 동시에 길이를 포함하여 갖습니다.
 
-`[]T` is a slice with elements of type `T`.
+`[]T`는 원소 `T`의 자료형으로 분할합니다.
 
 .play prog/slices.go
 
