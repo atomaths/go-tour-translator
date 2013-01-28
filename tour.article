@@ -232,11 +232,11 @@ Go 언어의 기본 자료형은 다음과 같습니다
 
 .play prog/struct-fields.go
 
-* Pointers
+* 포인터
 
-Go has pointers, but no pointer arithmetic.
+Go언어는 포인터가 있지만, 포인터 연산은 없습니다.
 
-Struct fields can be accessed through a struct pointer. The indirection through the pointer is transparent.
+구조체 변수는 구조체 포인터를 이용해서 접근 할 수 있습니다. 포인터를 이용한 구조체의 우회접근은 구조체에도 영향을 미칩니다.
 
 .play prog/pointers.go
 
