@@ -678,15 +678,15 @@ _고루틴_은 Go 런타임에 의해 관리되는 경량 쓰레드입니다.
 
 .play prog/channels.go
 
-* Buffered Channels
+* 버퍼링되는 채널
 
-Channels can be _buffered_.  Provide the buffer length as the second argument to `make` to initialize a buffered channel:
+채널은 _버퍼링_될 수 있습니다. `make`에 두번째 인자로 버퍼 용량을 넣음으로써 해당 용량만큼 버퍼링되는 채널을 생성할 수 있습니다:
 
 	ch := make(chan int, 100)
 
-Sends to a buffered channel block only when the buffer is full. Receives block when the buffer is empty.
+버퍼링되는 채널로의 송신은 버퍼가 꽉 찰 때까지 블록됩니다. 수신측은 버퍼가 빌 때 블록됩니다.
 
-Modify the example to overfill the buffer and see what happens.
+예제를 수정해서 버퍼를 넘치게 해보고 어떻게 동작하는지 확인해 보세요.
 
 .play prog/buffered-channels.go
 
