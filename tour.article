@@ -660,21 +660,21 @@ _고루틴_은 Go 런타임에 의해 관리되는 경량 쓰레드입니다.
 
 .play prog/goroutines.go
 
-* Channels
+* 채널(Channels)
 
-Channels are a typed conduit through which you can send and receive values with the channel operator, `<-`.
+채널은 채널 연산자 `<-` 를 이용해 값을 주고 받을 수 있는, 타입이 존재하는 파이프입니다.
 
-	ch <- v    // Send v to channel ch.
-	v := <-ch  // Receive from ch, and
-	           // assign value to v.
+	ch <- v    // v 를 ch로 보냅니다.
+	v := <-ch  // ch로부터 값을 받아서
+	           // v 로 넘깁니다.
 
-(The data flows in the direction of the arrow.)
+(데이터가 화살표 방향에 따라 흐릅니다.)
 
-Like maps and slices, channels must be created before use:
+맵이나 슬라이스처럼, 채널은 사용되기 전에 생성되어야 합니다:
 
 	ch := make(chan int)
 
-By default, sends and receives block until the other side is ready. This allows goroutines to synchronize without explicit locks or condition variables.
+기본적으로, 송/수신은 상대편이 준비될 때까지 블록됩니다. 이런 특성이 고루틴이 명시적인 락이나 조건 없이도 동기화 될 수 있도록 돕습니다.
 
 .play prog/channels.go
 
