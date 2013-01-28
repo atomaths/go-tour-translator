@@ -63,45 +63,45 @@ Run the code. Then rename `math.pi` to `math.Pi` and try it again.
 
 .play prog/exported-names.go
 
-* Functions
+* 함수(1)
 
-A function can take zero or more arguments.
+함수는 매개변수(인자)를 가질 수 있습니다.
 
-In this example, `add` takes two parameters of type `int`.
+예를 들어 `add` 라는 함수는 두개의 `int` 타입 매개변수를 받습니다.
 
-Notice that the type comes _after_ the variable name.
+매개변수의 타입은 변수명 _뒤에_ 명시합니다.
 
-(For more about why types look the way they do, see the [[http://golang.org/doc/articles/gos_declaration_syntax.html][article on Go's declaration syntax]].)
+(타입을 왜 변수명 뒤에 명시하는지에 대한 자세한 내용은 [[http://golang.org/doc/articles/gos_declaration_syntax.html][Go's declaration syntax]]를 참고하시기 바랍니다.)
 
 .play prog/functions.go
 
-* Functions continued
+* 함수(2)
 
-When two or more consecutive named function parameters share a type, you can omit the type from all but the last.
+함수의 두 개 이상의 매개변수가 같은 타입(type)일 때, 같은 타입을 취하는 마지막 매개변수에만 타입을 명시하고 나머지는 생략할 수 있습니다.)
 
-In this example, we shortened
+예를 들어,
 
 	x int, y int
 
-to
+과 같은 문장은 아래와 같이 표현할 수 있습니다.
 
-	x, y int
+	x, y
 
 .play prog/functions-continued.go
 
-* Multiple results
+* 여러 개의 결과(Multiple results)
 
-A function can return any number of results.
+하나의 함수는 여러 개의 결과를 반환할 수 있습니다.
 
-This function returns two strings.
+이 함수는 두개의 문자열을 반환합니다.
 
 .play prog/multiple-results.go
 
 * Named results
 
-Functions take parameters. In Go, functions can return multiple "result parameters", not just a single value. They can be named and act just like variables.
+함수는 매개변수를 취합니다. Go에서 함수는 여러 개의 "결과 매개변수(result parameters)"를 반환할 수 있습니다. 반환 값들에게 이름을 부여하면 변수처럼 사용할 수 있습니다.
 
-If the result parameters are named, a `return` statement without arguments returns the current values of the results.
+결과 매개변수에 이름을 붙히면, 반환 값을 지정하지 않은 `return` 문장으로 결과의 현재 값을 반환할 수 있습니다.
 
 .play prog/named-results.go
 
@@ -113,7 +113,7 @@ If the result parameters are named, a `return` statement without arguments retur
 
 * 변수의 초기화
 
-변수 선언과 함께 변수 마다 초기화를 할 수 있습니다.
+변수 선언과 함께 변수 각각을 초기화를 할 수 있습니다.
 
 초기화를 하는 경우 타입(type)을 생략할 수 있습니다. 변수는 초기화 하고자 하는 값에 따라 타입이 결정됩니다.
 
@@ -121,7 +121,7 @@ If the result parameters are named, a `return` statement without arguments retur
 
 * 변수의 짧은 선언
 
-함수 내에서 `:=` 할당을 `var`과 명시적인 타입(e.g. int, bool) 선언 대신 사용할 수 있습니다.
+함수 내에서 `:=` 을 `var`과 명시적인 타입(e.g. int, bool) 선언 대신 사용할 수 있습니다.
 
 (함수 밖의 모든 문장의 구조는 키워드로 시작하고, `:=` 선언은 사용할 수 없습니다.)
 
@@ -145,7 +145,7 @@ If the result parameters are named, a `return` statement without arguments retur
 
 .play prog/numeric-constants.go
 
-* For
+* For(반복문 for)
 
 Go 언어는 반복문이 'for'밖에 없습니다.
 
