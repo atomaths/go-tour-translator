@@ -240,13 +240,13 @@ Struct fields can be accessed through a struct pointer. The indirection through 
 
 .play prog/pointers.go
 
-* Struct Literals
+* 구조체 리터럴
 
-A struct literal denotes a newly allocated struct value by listing the values of its fields.
+구조체 리터럴은 구조체의 변수들을 나열하여 새로 할당된 구조체의 값을 나타냅니다.
 
-You can list just a subset of fields by using the `Name:` syntax. (And the order of named fields is irrelevant.)
+`Name` 구문을 사용하여 구조체 변수 중 일부를 나열할 수 있습니다. (항목들의 정렬 순서와는 관계가 없습니다.)
 
-The special prefix `&` constructs a pointer to a struct literal.
+특별한 접두어 `&` 를 사용하면 구조체 리터럴에 대한 포인터를 생성할 수 있습니다.
 
 .play prog/struct-literals.go
 
