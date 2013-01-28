@@ -642,7 +642,7 @@ The `rot13Reader` type is provided for you.  Make it an `io.Reader` by implement
 
 .play prog/exercise-rot-reader.go
 
-* Concurrency
+* 동시성
 
 * Goroutines
 
