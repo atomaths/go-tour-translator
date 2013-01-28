@@ -706,11 +706,11 @@ _고루틴_은 Go 런타임에 의해 관리되는 경량 쓰레드입니다.
 
 .play prog/range-and-close.go
 
-* Select
+* 셀렉트(Select)
 
-The `select` statement lets a goroutine wait on multiple communication operations.
+`select` 구문은 고루틴이 다수의 통신 동작으로부터 수행 준비를 기다릴 수 있게 합니다.
 
-A `select` blocks until one of its cases can run, then it executes that case.  It chooses one at random if multiple are ready.
+`select`는 `case`구문으로 받는 통신 동작들 중 하나가 수행될 수 있을 때까지 수행을 블록합니다. 다수의 채널이 동시에 준비되면 그 중 하나를 무작위로 선택합니다.
 
 .play prog/select.go
 
