@@ -714,17 +714,17 @@ _고루틴_은 Go 런타임에 의해 관리되는 경량 쓰레드입니다.
 
 .play prog/select.go
 
-* Default Selection
+* 셀렉트의 디폴트(default) 케이스
 
-The `default` case in a `select` is run if no other case is ready.
+`select`의 `default` 케이스는 현재 수행 준비가 완료된 케이스가 없을 때 수행됩니다.
 
-Use a `default` case to try a send or receive without blocking:
+블로킹 없이(비동기적인) 송/수신을 하고자 할 때 `default` 케이스를 사용하세요.
 
 	select {
 	case i := <-c:
-		// use i
+		// i를 사용
 	default:
-		// receiving from c would block
+		// c로부터의 수신은 블록된 상태
 	}
 
 .play prog/default-selection.go
