@@ -264,47 +264,47 @@ Go언어는 포인터가 있지만, 포인터 연산은 없습니다.
 
 .play prog/the-new-function.go
 
-* Maps
+* 맵
 
-A map maps keys to values.
+맵은 키를 값에 대응시킵니다.
 
-Maps must be created with `make` (not `new`) before use; the `nil` map is empty and cannot be assigned to.
+맵은 사용 전에 반드시 `new` 가 아닌 `make` 로 만들어져야 합니다; `nil` 맵은 비어있는 상태이고 할당될 수 없습니다.
 
 .play prog/maps.go
 
-* Map literals
+* 맵 리터럴
 
-Map literals are like struct literals, but the keys are required.
+맵 리터럴은 구조체 리터럴과 같지만 키는 필수적입니다.
 
 .play prog/map-literals.go
 
-* Map literals continued
+* 맵 리터럴 (앞에 이어서)
 
-If the top-level type is just a type name, you can omit it from the elements of the literal.
+만일 최상위 타입이 단지 타입이름이라면, 해당 리터럴의 구성요소로부터 최상위 타입을 생략할 수 있습니다.
 
 .play prog/map-literals-continued.go
 
-* Mutating Maps
+* 맵 변형하기
 
-Insert or update an element in map `m`:
+맵 `m` 에서 하나의 구성요소를 삽입 혹은 갱신하기:
 
 	m[key] = elem
 
-Retrieve an element:
+하나의 구성요소를 검색하기:
 
 	elem = m[key]
 
-Delete an element:
+하나의 구성요소를 삭제하기:
 
 	delete(m, key)
 
-Test that a key is present with a two-value assignment:
+키가 두 값의 할당으로 존재하는지 테스트하기:
 
 	elem, ok = m[key]
 
-If `key` is in `m`, `ok` is `true`. If not, `ok` is `false` and `elem` is the zero value for the map's element type.
+만일 `key` 가 `m` 안에 있다면, `ok` 는 `true` 가 됩니다. 그렇지 않다면, `ok` 는 `false` 가 되고 `elem` 은 맵의 구성요소 타입에 대한 초기값이 됩니다.
 
-Similarly, when reading from a map if the key is not present the result is the zero value for the map's element type.
+이와 비슷하게도, 맵에서 읽을 때 만일 키가 없다면 결과값은 맵의 구성요소 타입에 대한 초기값이 됩니다.
 
 .play prog/mutating-maps.go
 
