@@ -361,17 +361,19 @@ A nil slice has a length and capacity of 0.
 
 .play prog/nil-slices.go
 
-* Function values
+* 함수 값
 
-Functions are values too.
+함수는 값 입니다.
+(번역자 : 맨 아래 `hypot(3,4)` 의 hypot 함수를 Println함수의 인자값 처럼 사용 하고 있습니다.)
+
 
 .play prog/function-values.go
 
-* Function closures
+* 함수 Closure
 
-And functions are full closures.
+모든 함수는 Closure 입니다.
 
-The `adder` function returns a closure. Each closure is bound to its own `sum` variable.
+`adder` 함수는 closure를 반환합니다. 각각의 closure 는  자신의 `sum` 변수에 바인딩 됩니다.
 
 .play prog/function-closures.go
 
