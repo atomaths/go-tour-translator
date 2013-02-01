@@ -475,21 +475,21 @@ Find the cube root of 2, just to make sure the algorithm works. There is a [[htt
 
 .play prog/advanced-exercise-complex-cube-roots.go
 
-* Methods and Interfaces
+* 메소드(method)와 인터페이스(Interface)
 
-* Methods
+* 메소드
 
-Go does not have classes. However, you can define methods on struct types.
+고에는 클래스가 없습니다. 하지만 메소드를 구조체(struct)에 붙일 수 있습니다.
 
-The _method_receiver_ appears in its own argument list between the `func` keyword and the method name.
+_메소스_수신자(method_receiver)_ 는 `func` 키워드와 메소드의 이름 사이에 인자로 들어갑니다.
 
 .play prog/methods.go
 
-* Methods continued
+* 메소드 계속
 
-In fact, you can define a method on _any_ type you define in your package, not just structs.
+사실 메소드는 구조체(struct) 뿐 아니라 아무 타입(type)에나 붙일 수 있습니다.
 
-You cannot define a method on a type from another package, or on a basic type.
+다른 패키지에 있는 타입이나 기본 타입들에 메소드를 붙이는 것은 불가능합니다.
 
 .play prog/methods-continued.go
 
