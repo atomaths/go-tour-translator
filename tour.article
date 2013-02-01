@@ -481,7 +481,7 @@ Find the cube root of 2, just to make sure the algorithm works. There is a [[htt
 
 고에는 클래스가 없습니다. 하지만 메소드를 구조체(struct)에 붙일 수 있습니다.
 
-_메소스_수신자(method_receiver)_ 는 `func` 키워드와 메소드의 이름 사이에 인자로 들어갑니다.
+_메소스_리시버(method_receiver)_ 는 `func` 키워드와 메소드의 이름 사이에 인자로 들어갑니다.
 
 .play prog/methods.go
 
@@ -493,19 +493,20 @@ _메소스_수신자(method_receiver)_ 는 `func` 키워드와 메소드의 이�
 
 .play prog/methods-continued.go
 
-* Methods with pointer receivers
+* 포인터 리시버를 가지는 메소드
 
-Methods can be associated with a named type or a pointer to a named type.
+메소드는 이름이 있는 타입 또는 이름이 있는 타입의 포인터와 연결할 수 있습니다.
 
-We just saw two `Abs` methods. One on the `*Vertex` pointer type and the other on the `MyFloat` value type.
+방금 두 개의 `Abs` 메소르를 보았는데, 하나는 `*Vertex`라는 포인터 타입의 메소드고, 다른 하나는 `MyFloat` 값 타입의 메소드 입니다.
 
-There are two reasons to use a pointer receiver. First, to avoid copying the value on each method call (more efficient if the value type is a large struct). Second, so that the method can modify the value that its receiver points to.
+포인터 리시버를 사용하는 이유는 두 가지 입니다. 첫째, 매소드가 호출될 때 마다 값이 복사되는 것(큰 구조체 타입인 경우 값이 복사되는 것은 비효율적이죠)을 방지하기 위함 입니다. 다른 이유는 메소드에서 리시버 포인터가 가르키는 값을 수정하기 위함 입니다.
 
-Try changing the declarations of the `Abs` and `Scale` methods to use `Vertex` as the receiver, instead of `*Vertex`.
+`*Vertex`타입의 리시버 대신 `Vertex`를 사용하도록 메소드 `Abs`와 `Scale`의 선언부분을 바꿔 보세요.
 
-The `Scale` method has no effect when `v` is a `Vertex`. `Scale` mutates `v`. When `v` is a value (non-pointer) type, the method sees a copy of the `Vertex` and cannot mutate the original value.
+`v`를 `Vertex`타입으로 받으면 `Scale` 메소드가 더 이상 동작하지 않습니다. `Scale`은 `v`를 바꾸는데, `v`가 (포인터가 아닌) 값 타입이 때문에 `Vertex`타입인 복사본에 작업을 하기 때문에 원래의 값은 바뀌지 않습니다.
 
 `Abs` works either way. It only reads `v`. It doesn't matter whether it is reading the original value (through a pointer) or a copy of that value.
+`Abs`의 경우는 다릅니다. 여기서는 `v`를 읽기만 하기 때문에, (포인터가 가르키는) 원래의 값이건 복사본이건 상관이 없게 됩니다.
 
 .play prog/methods-with-pointer-receivers.go
 
