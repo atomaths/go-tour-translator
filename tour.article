@@ -510,17 +510,18 @@ _메소스_리시버(method_receiver)_ 는 `func` 키워드와 메소드의 이�
 
 .play prog/methods-with-pointer-receivers.go
 
-* Interfaces
+* 인터페이스
 
-An interface type is defined by a set of methods.
+인터페이스는 메소드의 집합으로 정의됩니다.
 
-A value of interface type can hold any value that implements those methods.
+그 메소드들의 구현되어 있는 타입의 값은 모두 인터페이스 타입의 값이 될 수 있습니다.
 
 .play prog/interfaces.go
 
 * Interfaces are satisfied implicitly
 
 A type implements an interface by implementing the methods.
+
 
 _There_is_no_explicit_declaration_of_intent._
 
