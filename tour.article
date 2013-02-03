@@ -391,11 +391,11 @@ Go언어는 포인터가 있지만, 포인터 연산은 없습니다.
 
 .play prog/range-continued.go
 
-* Switch
+* 스위치(Switch)
 
-You probably knew what `switch` was going to look like.
+`switch` 가 어떤 건지는 아실 겁니다.
 
-A case body breaks automatically, unless it ends with a `fallthrough` statement.
+각 case의 코드는 `fallthrough` 구문으로 끝나지 않는 이상, 자동으로 break 합니다.
 
 .play prog/switch.go
 
