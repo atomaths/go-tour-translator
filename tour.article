@@ -399,18 +399,18 @@ Go언어는 포인터가 있지만, 포인터 연산은 없습니다.
 
 .play prog/switch.go
 
-* Switch evaluation order
+* 스위치 동작 순서
 
-Switch cases evaluate cases from top to bottom, stopping when a case succeeds.
+스위치의 케이스 조건들은 위에서부터 순서대로 평가되며, 참인 케이스를 찾았을 때 평가를 멈춥니다.
 
-(For example,
+(예를 들어,
 
 	switch i {
 	case 0:
 	case f():
 	}
 
-does not call `f` if `i==0`.)
+는 `i==0` 가 참이면 `f` 는 호출하지 않습니다.)
 
 .play prog/switch-evaluation-order.go
 
