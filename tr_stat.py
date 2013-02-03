@@ -28,4 +28,4 @@ if __name__ == '__main__':
             print tEn.rstrip()
 
     print "="*79
-    print "%d%% translated"%(notTranslatedCnt * 100 / len(enTitles))
+    print "%d%% translated"%(100 - notTranslatedCnt * 100 / len(enTitles))
