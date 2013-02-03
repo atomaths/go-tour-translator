@@ -475,7 +475,7 @@ Find the cube root of 2, just to make sure the algorithm works. There is a [[htt
 
 .play prog/advanced-exercise-complex-cube-roots.go
 
-* 메소드(method)와 인터페이스(Interface)
+* 메소드(method)와 인터페이스(interface)
 
 * 메소드
 
@@ -518,18 +518,18 @@ _메소스_리시버(method_receiver)_ 는 `func` 키워드와 메소드의 이�
 
 .play prog/interfaces.go
 
-* Interfaces are satisfied implicitly
+* 인터페이스 암시적으로 충족됩니다
 
-A type implements an interface by implementing the methods.
+타입이 인터페이스의 메소드들을 구현하면 인터페이스를 구현한 게 됩니다.
 
 
-_There_is_no_explicit_declaration_of_intent._
+_이를_위해_명시적으로_선언할_게_없습니다._
 
-Implicit interfaces decouple implementation packages from the packages that define the interfaces: neither depends on the other.
+암시적 인터페이스는 인터페이스를 정의한 패키지로 부터 구현 패키지를 분리(decouple)해 줍니다. 다른 의존성 또한 없음은 물론입니다.
 
-It also encourages the definition of precise interfaces, because you don't have to find every implementation and tag it with the new interface name.
+이 특징은 상세하게 인터페이스를 정의하게 독려합니다. 모든 구현을 찾아 새 인터페이스 이름으로 태그할 필요가 없기 때문입니다.
 
-[[http://golang.org/pkg/io/][Package io]] defines `Reader` and `Writer`; you don't have to.
+[[http://golang.org/pkg/io/][패키지 io]]에 `Reader`와 `Writer`가 정의되어 있습니다. 따로 정의할 필요가 없습니다.
 
 .play prog/interfaces-are-satisfied-implicitly.go
 
