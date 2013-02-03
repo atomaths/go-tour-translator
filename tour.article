@@ -377,48 +377,48 @@ Go언어는 포인터가 있지만, 포인터 연산은 없습니다.
 
 .play prog/function-closures.go
 
-* Range
+* 레인지(Range)
 
-The `range` form of the `for` loop iterates over a slice or map.
+`for` 반복문에서의 `range` 구문은 슬라이스나 맵의 원소들에 대한 반복 수행을 합니다.
 
 .play prog/range.go
 
-* Range continued
+* 레인지(Range) 2
 
-You can skip the index or value by assigning to `_`.
+값을 `_`에 할당함으로써 인덱스나 값을 사용하지 않을 수 있습니다.
 
-If you only want the index, drop the “`,`value`” entirely.
+인덱스만 원한다면 "`,`value`" 부분을 완전히 제거하면 됩니다.
 
 .play prog/range-continued.go
 
-* Switch
+* 스위치(Switch)
 
-You probably knew what `switch` was going to look like.
+`switch` 가 어떤 건지는 아실 겁니다.
 
-A case body breaks automatically, unless it ends with a `fallthrough` statement.
+각 case의 코드는 `fallthrough` 구문으로 끝나지 않는 이상, 자동으로 break 합니다.
 
 .play prog/switch.go
 
-* Switch evaluation order
+* 스위치 동작 순서
 
-Switch cases evaluate cases from top to bottom, stopping when a case succeeds.
+스위치의 케이스 조건들은 위에서부터 순서대로 평가되며, 참인 케이스를 찾았을 때 평가를 멈춥니다.
 
-(For example,
+(예를 들어,
 
 	switch i {
 	case 0:
 	case f():
 	}
 
-does not call `f` if `i==0`.)
+는 `i==0` 가 참이면 `f` 는 호출하지 않습니다.)
 
 .play prog/switch-evaluation-order.go
 
-* Switch with no condition
+* 조건값 없는 스위치
 
-Switch without a condition is the same as `switch`true`.
+조건값 없는 스위치는 `switch`true` 와 같습니다.
 
-This construct can be a clean way to write long if-then-else chains.
+이런 구조는 긴 if-then-else 문을 좀 더 깔끔하게 작성하려 할 때 유용합니다.
 
 .play prog/switch-with-no-condition.go
 
