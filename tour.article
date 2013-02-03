@@ -377,9 +377,9 @@ Go언어는 포인터가 있지만, 포인터 연산은 없습니다.
 
 .play prog/function-closures.go
 
-* Range
+* 레인지(Range)
 
-The `range` form of the `for` loop iterates over a slice or map.
+`for` 반복문에서의 `range` 구문은 슬라이스나 맵의 원소들에 대한 반복 수행을 합니다.
 
 .play prog/range.go
 
