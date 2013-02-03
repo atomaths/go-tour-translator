@@ -414,11 +414,11 @@ Go언어는 포인터가 있지만, 포인터 연산은 없습니다.
 
 .play prog/switch-evaluation-order.go
 
-* Switch with no condition
+* 조건값 없는 스위치
 
-Switch without a condition is the same as `switch`true`.
+조건값 없는 스위치는 `switch`true` 와 같습니다.
 
-This construct can be a clean way to write long if-then-else chains.
+이런 구조는 긴 if-then-else 문을 좀 더 깔끔하게 작성하려 할 때 유용합니다.
 
 .play prog/switch-with-no-condition.go
 
