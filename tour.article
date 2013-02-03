@@ -533,15 +533,15 @@ _이를_위해_명시적으로_선언할_게_없습니다._
 
 .play prog/interfaces-are-satisfied-implicitly.go
 
-* Errors
+* 에러(error)
 
-An error is anything that can describe itself as an error string. The idea is captured by the predefined, built-in interface type, `error`, with its single method, `Error`, returning a string:
+에러 문장(string)으로 자신을 표현할 수 있는 것은 모두 에러입니다. 이 아이디어는 문자열(string)을 반환하는 하나의 메소드 `Error`로 구성된 내장 인터페이스 타입 `error`에서 나왔습니다.
 
 	type error interface {
 		Error() string
 	}
 
-The `fmt` package's various print routines automatically know to call the method when asked to print an `error`.
+`fmt`패키지의 다양한 출력 루틴들은 `error`의 출력을 요청받았을 때 자동으로 이 메소드를 호출합니다.
 
 .play prog/errors.go
 
