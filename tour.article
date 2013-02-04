@@ -561,9 +561,9 @@ _이를_위해_명시적으로_선언할_게_없습니다._
 
 .play prog/web-servers.go
 
-* Images
+* 이미지
 
-[[http://golang.org/pkg/image/#Image][Package image]] defines the `Image` interface:
+[[http://golang.org/pkg/image/#Image][image 패키지]]에는 `Image` 인터페이스가 정의되어 있습니다.
 
 	package image
 	
@@ -573,9 +573,9 @@ _이를_위해_명시적으로_선언할_게_없습니다._
 		At(x, y int) color.Color
 	}
 
-(See [[http://golang.org/pkg/image/#Image][the documentation]] for all the details.)
+(전체 내용은 [[http://golang.org/pkg/image/#Image][패키지 문서]]를 참고하세요.)
 
-Also, `color.Color` and `color.Model` are interfaces, but we'll ignore that by using the predefined implementations `color.RGBA` and `color.RGBAModel`.
+또한, `color.Color`와 `color.Model`도 인터페이스지만, 여기서는 대신, 패키지에 구현된 `color.RGBA`와 `color.RGBAModel`를 사용하겠습니다.
 
 .play prog/images.go
 
