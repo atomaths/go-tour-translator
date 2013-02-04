@@ -31,6 +31,22 @@ The tour is available in other languages:
 
 Click the "next" button or type PageDown to continue.
 
+* Go offline
+
+This tour is also available as a stand-alone program that you can use without access to the internet.
+
+The stand-alone tour is faster, as it builds and runs the code samples on your own machine. It also includes additional exercises not available in this sandboxed version.
+
+To run the tour locally first [[http://golang.org/doc/install/][install Go]], then use [[http://golang.org/cmd/go/][go get]] to install [[http://code.google.com/p/go-tour/][gotour]]:
+
+        go get code.google.com/p/go-tour/gotour
+
+and run the resultant `gotour` executable.
+
+Otherwise, click the "next" button or type PageDown to continue.
+
+_(You_may_return_to_these_instructions_at_any_time_by_clicking_the_"index"_button.)_
+
 * Packages
 
 Every Go program is made up of packages.

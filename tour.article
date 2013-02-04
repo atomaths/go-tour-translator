@@ -27,10 +27,27 @@ http://golang.org
 - [[http://go-tour-he.appspot.com/][Hebrew — עִבְרִית]]
 - [[http://go-tour-zh.appspot.com/][Chinese — 普通话]]
 - [[http://go-tour-jp.appspot.com/][Japanese — 日本語]]
+- [[http://go-tour-kr.appspot.com/][Korean — 한국어]]
 
 계속 하시려면 Next 버튼을 클릭하거나 PageDown 키를 누르세요.
 
-* Packages
+* Go offline
+
+Go Tour는 인터넷 연결없이 stand-alone 프로그램으로도 사용할 수 있습니다.
+
+stand-alone으로 Go Tour를 이용하면 예제 코드들이 로컬 머신에서 빌드되고 실행되기 때문에 보다 빠릅니다. 그리고 웹버전에는 가능하지 않은 추가적인 연습문제들을 포함하고 있습니다.
+
+이 투어를 로컬에서 실행하기 위해 먼저 [[http://golang.org/doc/install/][Go를 설치]] 하고, [[http://code.google.com/p/go-tour/][gotour]]를 설치하기 위해 [[http://golang.org/cmd/go/][go get]]을 명령을 이용하면 됩니다.
+
+	go get code.google.com/p/go-tour/gotour
+
+그리고 위 결과로 생긴 `gotour` 를 실행하세요.
+
+오프라인 모드를 사용하지 않고 계속 진행하려면, "next" 버튼이나 PageDown 키를 누르세요.
+
+_(언제든_"index"_버튼을_누르면_원하는_특별한_챕터로_이동할_수_있습니다.)_
+
+* 패키지(Packages)
 
 모든 Go 프로그램은 패키지로 구성되어 있습니다.
 
