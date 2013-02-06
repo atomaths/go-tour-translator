@@ -637,29 +637,29 @@ For example, you should be able to register handlers using:
 
 .play prog/exercise-http-handlers.go
 
-* Exercise: Images
+* 연습: 이미지
 
-Remember the picture generator you wrote earlier? Let's write another one, but this time it will return an implementation of `image.Image` instead of a slice of data.
+이전의 연습에서 당신이 작성한 그림 생성기를 기억하십니까? 다른 생성기를 만들어봅시다. 하지만 이번에는 데이터의 슬라이스 대신에 `image.Image` 의 구현체를 반환할 것입니다.
 
-Define your own `Image` type, implement [[http://golang.org/pkg/image/#Image][the necessary methods]], and call `pic.ShowImage`.
+당신 자신의 `Image` 타입을 정의하시고, [[http://golang.org/pkg/image/#Image][필수 함수들]] 을 구현하신 다음, `pic.ShowImage` 를 호출하십시오.
 
-`Bounds` should return a `image.Rectangle`, like `image.Rect(0,`0,`w,`h)`.
+`Bounds` 는 `image.Rect(0,`0,`w,`h)` 와 같은 `image.Rectangle` 을 반환해야 합니다.
 
-`ColorModel` should return `color.RGBAModel`.
+`ColorModel` 은 `color.RGBAModel` 을 반환해야 합니다.
 
-`At` should return a color; the value `v` in the last picture generator corresponds to `color.RGBA{v,`v,`255,`255}` in this one.
+`At` 은 하나의 컬러를 반환해야 합니다; 지난 그림 생성기에서 값 `v` 는 `color.RGBA{v,`v,`255,`255}` 와 같습니다.
 
 .play prog/exercise-images.go
 
-* Exercise: Rot13 Reader
+* 연습: Rot13 Reader
 
-A common pattern is an [[http://golang.org/pkg/io/#Reader][io.Reader]] that wraps another `io.Reader`, modifying the stream in some way.
+어떤 식으로든 스트림을 수정하여 다른 `io.Reader` 를 감싸는 [[http://golang.org/pkg/io/#Reader][io.Reader]] 는 흔한 패턴입니다.
 
-For example, the [[http://golang.org/pkg/compress/gzip/#NewReader][gzip.NewReader]] function takes an `io.Reader` (a stream of gzipped data) and returns a `*gzip.Reader` that also implements `io.Reader` (a stream of the decompressed data).
+예컨대, [[http://golang.org/pkg/compress/gzip/#NewReader][gzip.NewReader]] 함수는 `io.Reader` (gzip으로 압축된 데이터의 스트림) 를 가지고, `io.Reader` (압축 해제된 데이터의 스트림) 를 구현한 `*gzip.Reader`를 반환합니다.
 
-Implement a `rot13Reader` that implements `io.Reader` and reads from an `io.Reader`, modifying the stream by applying the [[http://en.wikipedia.org/wiki/ROT13][ROT13]] substitution cipher to all alphabetical characters.
+[[http://en.wikipedia.org/wiki/ROT13][ROT13]] 치환 암호화를 모든 알파벳 문자에 적용함으로써 스트림을 수정하며 `io.Reader` 를 구현하고 `io.Reader` 로 부터 읽는 `rot13Reader` 를 구현하십시오.
 
-The `rot13Reader` type is provided for you.  Make it an `io.Reader` by implementing its `Read` method.
+`rot13Reader` 타입은 당신을 위해 제공됩니다. 이 타입의 `Read` 함수를 구현함으로써 `io.Reader` 을 만들어 보십시오.
 
 .play prog/exercise-rot-reader.go
 
