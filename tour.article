@@ -138,7 +138,7 @@ Go에서는 첫 문자가 대문자로 시작하면 그 패키지를 사용하�
 
 * 변수의 짧은 선언
 
-함수 내에서 `:=` 을 `var` 과 명시적인 타입(e.g. int, bool) 선언 대신 사용할 수 있습니다.
+함수 내에서 `:=` 을 `var`과 명시적인 타입(e.g. int, bool) 선언 대신 사용할 수 있습니다.
 
 (함수 밖의 모든 문장의 구조는 키워드로 시작하고, `:=` 선언은 사용할 수 없습니다.)
 
@@ -564,7 +564,7 @@ _이를_위해_명시적으로_선언할_게_없습니다._
 
 * 웹 서버
 
-[[http://golang.org/pkg/net/http/][http 패키지]]는 `http.Handler` 를 구현한 값을 사용하여 HTTP requests를 제공합니다.:
+[[http://golang.org/pkg/net/http/][Package http]] 는 `http.Handler` 를 구현한 어떠한 값을 사용하여 HTTP 요청(requests)을 제공합니다.
 
 	package http
 	
@@ -572,15 +572,15 @@ _이를_위해_명시적으로_선언할_게_없습니다._
 		ServeHTTP(w ResponseWriter, r *Request)
 	}
 
-왼쪽의 코드를 보면 `http.Handler` 를 구현한 타입 `Hello` 를 확인할 수 있습니다.
+이 예제에서, `Hello` 라는 타입은 `http.Handler` 를 구현합니다.
 
-결과를 보기 위해 [[http://localhost:4000/][http://localhost:4000/]] 에 접속해보세요.
+인사말을 보기위해서 [[http://localhost:4000/][http://localhost:4000/]] 를 방문하십시오.
 
 .play prog/web-servers.go
 
 * 이미지
 
-[[http://golang.org/pkg/image/#Image][image 패키지]]에는 `Image` 인터페이스가 정의되어 있습니다.
+[[http://golang.org/pkg/image/#Image][Package image]] 는 `Image` 인터페이스를 정의합니다.
 
 	package image
 	
@@ -590,9 +590,9 @@ _이를_위해_명시적으로_선언할_게_없습니다._
 		At(x, y int) color.Color
 	}
 
-(전체 내용은 [[http://golang.org/pkg/image/#Image][패키지 문서]]를 참고하세요.)
+(모든 세부사항에 대한 것은 [[http://golang.org/pkg/image/#Image][이 문서]] 를 참고하십시오.)
 
-또한, `color.Color`와 `color.Model`도 인터페이스지만, 여기서는 대신, 패키지에 구현된 `color.RGBA`와 `color.RGBAModel`를 사용하겠습니다.
+또한, `color.Color` 와 `color.Model` 는 인터페이스이지만, 미리 정의된 구현체인 `color.RGBA` 와 `color.RGBAModel` 을 사용함으로써 그 인터페이스를 무시할 수 있습니다.
 
 .play prog/images.go
 
@@ -637,29 +637,29 @@ For example, you should be able to register handlers using:
 
 .play prog/exercise-http-handlers.go
 
-* Exercise: Images
+* 연습: 이미지
 
-Remember the picture generator you wrote earlier? Let's write another one, but this time it will return an implementation of `image.Image` instead of a slice of data.
+이전의 연습에서 당신이 작성한 그림 생성기를 기억하십니까? 다른 생성기를 만들어봅시다. 하지만 이번에는 데이터의 슬라이스 대신에 `image.Image` 의 구현체를 반환할 것입니다.
 
-Define your own `Image` type, implement [[http://golang.org/pkg/image/#Image][the necessary methods]], and call `pic.ShowImage`.
+당신 자신의 `Image` 타입을 정의하시고, [[http://golang.org/pkg/image/#Image][필수 함수들]] 을 구현하신 다음, `pic.ShowImage` 를 호출하십시오.
 
-`Bounds` should return a `image.Rectangle`, like `image.Rect(0,`0,`w,`h)`.
+`Bounds` 는 `image.Rect(0,`0,`w,`h)` 와 같은 `image.Rectangle` 을 반환해야 합니다.
 
-`ColorModel` should return `color.RGBAModel`.
+`ColorModel` 은 `color.RGBAModel` 을 반환해야 합니다.
 
-`At` should return a color; the value `v` in the last picture generator corresponds to `color.RGBA{v,`v,`255,`255}` in this one.
+`At` 은 하나의 컬러를 반환해야 합니다; 지난 그림 생성기에서 값 `v` 는 `color.RGBA{v,`v,`255,`255}` 와 같습니다.
 
 .play prog/exercise-images.go
 
-* Exercise: Rot13 Reader
+* 연습: Rot13 Reader
 
-A common pattern is an [[http://golang.org/pkg/io/#Reader][io.Reader]] that wraps another `io.Reader`, modifying the stream in some way.
+어떤 식으로든 스트림을 수정하여 다른 `io.Reader` 를 감싸는 [[http://golang.org/pkg/io/#Reader][io.Reader]] 는 흔한 패턴입니다.
 
-For example, the [[http://golang.org/pkg/compress/gzip/#NewReader][gzip.NewReader]] function takes an `io.Reader` (a stream of gzipped data) and returns a `*gzip.Reader` that also implements `io.Reader` (a stream of the decompressed data).
+예컨대, [[http://golang.org/pkg/compress/gzip/#NewReader][gzip.NewReader]] 함수는 `io.Reader` (gzip으로 압축된 데이터의 스트림) 를 가지고, `io.Reader` (압축 해제된 데이터의 스트림) 를 구현한 `*gzip.Reader`를 반환합니다.
 
-Implement a `rot13Reader` that implements `io.Reader` and reads from an `io.Reader`, modifying the stream by applying the [[http://en.wikipedia.org/wiki/ROT13][ROT13]] substitution cipher to all alphabetical characters.
+[[http://en.wikipedia.org/wiki/ROT13][ROT13]] 치환 암호화를 모든 알파벳 문자에 적용함으로써 스트림을 수정하며 `io.Reader` 를 구현하고 `io.Reader` 로 부터 읽는 `rot13Reader` 를 구현하십시오.
 
-The `rot13Reader` type is provided for you.  Make it an `io.Reader` by implementing its `Read` method.
+`rot13Reader` 타입은 당신을 위해 제공됩니다. 이 타입의 `Read` 함수를 구현함으로써 `io.Reader` 을 만들어 보십시오.
 
 .play prog/exercise-rot-reader.go
 
