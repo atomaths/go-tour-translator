@@ -30,36 +30,36 @@ http://golang.org
 
 계속 하시려면 Next 버튼을 클릭하거나 PageDown 키를 누르세요.
 
-* Packages
+* 패키지(Packages)
 
-Every Go program is made up of packages.
+모든 Go 프로그램은 패키지로 구성됩니다.
 
-Programs start running in package `main`.
+프로그램은 `main` 패키지에서 시작합니다.
 
-This program is using the packages with import paths `"fmt"` and `"math"`.
+이 프로그램은 `"fmt"` 와 `"math"` 경로에 있는 패키지를 사용합니다.
 
-By convention, the package name is the same as the last element of the import path.
+패키지 이름은 경로의 마지막 이름을 사용하는 것이 규칙입니다. 예를 들어 `"path/filepath"` 를 사용한다면 패키지명은 `filepath` 입니다.
 
 .play prog/packages.go
 
-* Imports
+* 임포트 (Imports)
 
-This code groups the imports into a parenthesized, "factored" import statement. You can also write multiple import statements, like:
+이 코드에서는 여러개의 `"package"` 를 소괄호로 감싸서 import를 표현합니다. 아래와 같이 import 문장을 여러번 사용할 수 도 있습니다.
 
 	import "fmt"
 	import "math"
 
 .play prog/imports.go
 
-* Exported names
+* 익스포트 (Exported names)
 
-After importing a package, you can refer to the names it exports.
+패키지를 Import 하면 패키지에서 export 한 내용을 사용(참조)할 수 있습니다.
 
-In Go, a name is exported if it begins with a capital letter.
+Go에서는 Export하기 위해서 첫 글자가 대문자로 시작해야 합니다.
 
-`Foo` is an exported name, as is `FOO`. The name `foo` is not exported.
+예를 들어 `Foo` 와 `FOO` 는 외부에서 참조할 수 있지만 `foo` 는 참조 할 수 없습니다.
 
-Run the code. Then rename `math.pi` to `math.Pi` and try it again.
+예제를 실행해보세요. 애러가 발생한다면 `math.pi` 를 `math.Pi` 로 변경 해보세요.
 
 .play prog/exported-names.go
 
@@ -69,15 +69,15 @@ Run the code. Then rename `math.pi` to `math.Pi` and try it again.
 
 예를 들어 `add` 라는 함수는 두개의 `int` 타입 매개변수를 받습니다.
 
-매개변수의 타입은 변수명 _뒤에_ 명시합니다.
+C, C++, Java 언어와 다르게 매개변수의 타입은 변수명 _뒤에_ 명시합니다.
 
-(타입을 왜 변수명 뒤에 명시하는지에 대한 자세한 내용은 [[http://golang.org/doc/articles/gos_declaration_syntax.html][Go's declaration syntax]]를 참고하시기 바랍니다.)
+(타입을 왜 변수명 뒤에 명시하는지에 대한 자세한 내용은 [[http://golang.org/doc/articles/gos_declaration_syntax.html][Go's declaration syntax]]를 참고하시기 바랍니다. 간단히 설명하면 코드를 왼쪽에서 오른쪽으로 읽을 때 자연스럽게 읽기 위해서 입니다.)
 
 .play prog/functions.go
 
-* 함수(2)
+* 함수 (2)
 
-함수의 두 개 이상의 매개변수가 같은 타입(type)일 때, 같은 타입을 취하는 마지막 매개변수에만 타입을 명시하고 나머지는 생략할 수 있습니다.)
+두 개 이상의 매개변수가 같은 타입(type)일 때, 같은 타입을 취하는 마지막 매개변수에만 타입을 명시하고 나머지는 생략할 수 있습니다.
 
 예를 들어
 
@@ -93,23 +93,23 @@ Run the code. Then rename `math.pi` to `math.Pi` and try it again.
 
 하나의 함수는 여러 개의 결과를 반환할 수 있습니다.
 
-이 함수는 두개의 문자열을 반환합니다.
+예제 코드에서의 함수는 두개의 문자열을 반환합니다.
 
 .play prog/multiple-results.go
 
 * 이름이 정해진 결과 (Named results)
 
-함수는 매개변수를 취합니다. Go에서 함수는 여러 개의 "결과 매개변수(result parameters)"를 반환할 수 있습니다. 반환 값들에게 이름을 부여하면 변수처럼 사용할 수 있습니다.
+함수는 매개변수를 취합니다. Go에서 함수는 여러 개의 결과를 반환할 수 있습니다. 반환 값에 이름을 부여하면 변수처럼 사용할 수도 있습니다.
 
-결과 매개변수에 이름을 붙히면, 반환 값을 지정하지 않은 `return` 문장으로 결과의 현재 값을 반환할 수 있습니다.
+결과에 이름을 붙히면, 반환 값을 지정하지 않은 `return` 문장으로 결과의 현재 값을 알아서 반환합니다.
 
 .play prog/named-results.go
 
 * 변수 (Variables)
 
-`var` 문장은 변수를 선언합니다. 
+변수를 선언을 위해 `var` 을 사용합니다.
 
-함수의 매개변수 처럼 타입은 문장 끝에 명시합니다.
+함수의 매개변수처럼 타입은 문장 끝에 명시합니다.
 
 .play prog/variables.go
 
@@ -123,82 +123,85 @@ Run the code. Then rename `math.pi` to `math.Pi` and try it again.
 
 * 변수의 짧은 선언
 
-함수 내에서 `:=` 을 `var` 과 명시적인 타입(e.g. int, bool) 선언 대신 사용할 수 있습니다.
+함수 내에서 `:=` 을 사용하면 `var` 과 명시적인 타입(e.g. int, bool) 을 생략할 수 있습니다.
 
-(함수 밖의 모든 문장의 구조는 키워드로 시작하고, `:=` 선언은 사용할 수 없습니다.)
+(그러나 함수 밖에서는 `:=` 선언을 사용할 수 없습니다.)
 
 .play prog/short-variable-declarations.go
 
-* Constants (상수)
+* 상수 (Constants)
 
 상수는 `const` 키워드와 함께 변수처럼 선언합니다.
 
-상수는 문자(character), 문자열(string), 부울(boolean), 숫자(numeric values)일 수 있습니다.
+상수는 문자(character), 문자열(string), 부울(boolean) 등(values)일 수 있습니다.
 
 .play prog/constants.go
 
-* Numeric Constants (숫자 상수)
+* 숫자형 상수 (Numeric Constants)
 
-숫자 상수는 매우 정밀도가 높은 _값(values)_ 입니다.
+숫자형 상수는 _정밀한 값(values)_ 을 표현할 수 있습니다.
 
-타입을 지정하지 않은 상수는 문맥(context)에 맞게 필요로 하는 타입을 가지게 됩니다.
+타입을 지정하지 않은 상수는 문맥(context)에 따라 타입을 가지게 됩니다.
 
-`needInt(Big)`을 출력하는 것도 한번 해보세요.
+코드를 통해 `needInt(Big)` 는 어떤 결과를 출력할지 실험해보세요.
 
 .play prog/numeric-constants.go
 
-* For(반복문 for)
+* For (반복문 for)
 
-Go has only one looping construct, the `for` loop.
-Go 언어는 반복문이 'for'밖에 없습니다.
-The basic `for` loop looks as it does in C or Java, except that the `(`)` are gone (they are not even optional) and the `{`}` are required.
-기본적인 'for' 반복문은 C와 Java 언어와 거의 유사합니다. 다른점은 소괄호 ( )를 사용하지 않습니다. 하지만 중괄호 { } 는 필요합니다.
+Go 언어는 반복문이 `for` 밖에 없습니다.
+
+기본적인 `for` 반복문은 C와 Java 언어와 거의 유사합니다. 다른점은 소괄호 ( )가 필요하지 않다는 것입니다.
+
+하지만 실행문을 위한 중괄호 { } 는 필요합니다.
+
 .play prog/for.go
 
-* For continued
+* For (2)
 
-As in C or Java, you can leave the pre and post statements empty.
+C와 Java에서 처럼 조건문만 표현할 수도 있습니다.
+
 .play prog/for-continued.go
 
-* For is Go's "while"
+* Go에서 "While" 사용하기
 
-At that point you can drop the semicolons: C's `while` is spelled `for` in Go.
+for(2)에서의 예제에서 처럼 조건문만 표시하면 C에서 `while` 을 사용하듯 Go에서 `for` 를 사용할 수 있습니다.
 
 .play prog/for-is-gos-while.go
 
-* Forever
+* 무한 루프
 
-If you omit the loop condition it loops forever, so an infinite loop is compactly expressed.
+for에서 조건문을 생략하면 무한루프를 표현할 수 있습니다.
 
 .play prog/forever.go
 
-* If
+* 조건문 (If)
 
-The `if` statement looks as it does in C or Java, except that the `(`)` are gone (they are not even optional) and the `{`}` are required.
+`if` 문은 C와 Java와 비슷합니다. 조건 표현을 을 위해 `(`)` 는 사용하지 않습니다. 하지만 실행문을 위한 `{`}` 는 반드시 작성해야합니다.
 
-(Sound familiar?)
+(For문과 비슷하죠?)
 
 .play prog/if.go
 
-* If with a short statement
+* If와 짧은 실행문 사용하기
 
-Like `for`, the `if` statement can start with a short statement to execute before the condition.
+`for` 처럼 `if` 에서도 조건문 앞에 짧은 문장을 실행할 수 있습니다.
 
-Variables declared by the statement are only in scope until the end of the `if`.
+짧은 실행문을 통해 선언된 변수는 `if` _안의 범위(scope)_ 에서 만 사용할 수 있습니다.
 
-(Try using `v` in the last `return` statement.)
+(코드의 `pow` 함수에서 `return` 전에 `v` 를 사용해보세요.)
 
 .play prog/if-with-a-short-statement.go
 
-* If and else
+* If와 else
 
-Variables declared inside an `if`'s short statement are also available inside any of the `else` blocks.
+`if` 에서 짧은 실행문을 통해 선언된 변수는 `else` 안에서도 사용 가능합니다.
 
 .play prog/if-and-else.go
 
-* Basic types
+* 기본 타입
 
-Go's basic types are
+Go의 기본 타입은 아래와 같습니다.
 
 	bool
 	
@@ -207,10 +210,10 @@ Go's basic types are
 	int  int8  int16  int32  int64
 	uint uint8 uint16 uint32 uint64 uintptr
 	
-	byte // alias for uint8
+	byte // uint8의 별칭
 	
-	rune // alias for int32
-	     // represents a Unicode code point
+	rune // int32의 별칭
+	     // 유니코드 값을 표
 	
 	float32 float64
 	
@@ -218,129 +221,141 @@ Go's basic types are
 
 .play prog/basic-types.go
 
-* Structs
+* 구조체 (Structs)
 
-A `struct` is a collection of fields.
+`struct` 는 필드의 조합입니다.
 
-(And a `type` declaration does what you'd expect.)
+(그리고 `type` 선언으로 struct의 이름을 지정할 수 있습니다.)
 
 .play prog/structs.go
 
-* Struct Fields
+* 구조체 필드
 
-Struct fields are accessed using a dot.
+구조체 필드는 dot(.) 으로 접근합니다.
 
 .play prog/struct-fields.go
 
-* Pointers
+* 포인터 (Pointers)
 
-Go has pointers, but no pointer arithmetic.
+Go에는 포인터가 있지만 포인터 연산은 불가능합니다.
 
-Struct fields can be accessed through a struct pointer. The indirection through the pointer is transparent.
+구조체 포인터로 구조체 필드에 접근할 수 있습니다.
+
+(The indirection through the pointer is transparent.)
 
 .play prog/pointers.go
 
-* Struct Literals
+* 구조체 리터럴 (Struct Literals)
 
-A struct literal denotes a newly allocated struct value by listing the values of its fields.
+구조체 리터럴은 필드의 값을 나열해서 구조체 값을 새롭게 할당하는 방법입니다.
 
-You can list just a subset of fields by using the `Name:` syntax. (And the order of named fields is irrelevant.)
+원하는 필드를 `{Name: value}` 문법을 통해 할당할 수 있습니다. (필드의 순서는 상관 없습니다.)
 
-The special prefix `&` constructs a pointer to a struct literal.
+특수 기호 `&` 는 구조체 리터럴의 포인터를 생성합니다.
 
 .play prog/struct-literals.go
 
-* The new function
+* new 함수
 
-The expression `new(T)` allocates a zeroed `T` value and returns a pointer to it.
+`new(T)` 는 모든 필드가 0(zero value)이 할당된 `T` 의 포인터를 반환합니다.
 
 	var t *T = new(T)
 
-or
+또는
 
 	t := new(T)
 
 .play prog/the-new-function.go
 
-* Maps
+* 맵 (Maps)
 
-A map maps keys to values.
+맵은 값에 키를 지정합니다.
 
-Maps must be created with `make` (not `new`) before use; the `nil` map is empty and cannot be assigned to.
+맵은 반드시 사용하기 전에 `make` 를 명시해야합니다. (주의: `new` 가 아닙니다)
+
+`make`를 수행하지 않은 `nil` 에는 값을 할당할 수 없습니다.
 
 .play prog/maps.go
 
-* Map literals
+* 맵 리터럴 (Map literals)
 
-Map literals are like struct literals, but the keys are required.
+맵 리터럴은 구조체 리터럴과 비슷하지만 `key` 를 반드시 지정해야 합니다.
 
 .play prog/map-literals.go
 
-* Map literals continued
+* 맵 리터럴 (2)
 
-If the top-level type is just a type name, you can omit it from the elements of the literal.
+만약 가장 상위의 타입이 타입명이라면 리터럴에서 타입명을 생략해도 됩니다.
+
+	"Bell Labs": {40.68433, -74.39967}
+
+또는
+
+	"Bell Labs": Vertex{40.68433, -74.39967}
+
+는 같은 표현입니다.
 
 .play prog/map-literals-continued.go
 
-* Mutating Maps
+* 맵 다루기 (Mutating Maps)
 
-Insert or update an element in map `m`:
+맵 `m` 의 요소를 삽입하거나 수정하기:
 
 	m[key] = elem
 
-Retrieve an element:
+요소 값 가져오기:
 
 	elem = m[key]
 
-Delete an element:
+요소 지우기:
 
 	delete(m, key)
 
-Test that a key is present with a two-value assignment:
+키의 존재 여부 확인하기:
 
 	elem, ok = m[key]
 
-If `key` is in `m`, `ok` is `true`. If not, `ok` is `false` and `elem` is the zero value for the map's element type.
+위의 `ok` 의 값은 `m` 에 `key` 가 존재한다면 `true` 존재하지 않으면 `false`, `elem` 은 타입에 따라 0(zero value) 가 됩니다.
 
-Similarly, when reading from a map if the key is not present the result is the zero value for the map's element type.
+이처럼 `map` 을 읽을 때, 존재하지 않는 `key` 의 반환 값은 타입에 맞는 _zero value_ 입니다.
 
 .play prog/mutating-maps.go
 
-* Slices
+* 슬라이스 (Slices)
 
-A slice points to an array of values and also includes a length.
+슬라이스는 배열의 값을 가리킵니다(point). 그리고 배열의 길이를 가지고 있습니다.
 
-`[]T` is a slice with elements of type `T`.
+`[]T` 는 타입 `T` 를 가지는 요소의 슬라이스(slice) 입니다.
 
 .play prog/slices.go
 
-* Slicing slices
+* 슬라이스 자르기 (Slicing slices)
 
-Slices can be re-sliced, creating a new slice value that points to the same array.
+슬라이스는 재분할 할 수도 있고, 같은 배열을 가리키는(point) 새로운 슬라이스를 만들 수 도 있습니다.
 
-The expression
+예제로 살펴보면
 
 	s[lo:hi]
 
-evaluates to a slice of the elements from `lo` through `hi-1`, inclusive. Thus
+위의 표현은 `lo` 에서 `hi-1` 의 요소(element)를 포함하는 슬라이스입니다. 따라서
 
 	s[lo:lo]
 
-is empty and
+는 빈(empty) 슬라이스 이고
 
 	s[lo:lo+1]
 
-has one element.
+는 하나의 요소를 가집니다.
 
 .play prog/slicing-slices.go
 
-* Making slices
+* 슬라이스 만들기
 
-Slices are created with the `make` function. It works by allocating a zeroed array and returning a slice that refers to that array:
+슬라이스는 `make` 함수로 만들 수 있습니다. 이렇게 생성된 슬라이스는 0을 할당한 배열을 생성하고, 그것을 참조(refer)합니다.
 
 	a := make([]int, 5)  // len(a)=5
 
-To specify a capacity, pass a third argument to `make`:
+`make` 함수의 세번째 매개변수로 최대(capacity)를 제한할 수 있습니다.
 
 	b := make([]int, 0, 5) // len(b)=0, cap(b)=5
 
@@ -549,9 +564,9 @@ The `fmt` package's various print routines automatically know to call the method
 		ServeHTTP(w ResponseWriter, r *Request)
 	}
 
-왼쪽의 코드를 보면 `http.Handler` 를 구현한 타입 `Hello` 를 확인할 수 있습니다.
+왼쪽의 코드를 보면 `http.Handler` 를 구현한 `Hello` 타입을 확인할 수 있습니다.
 
-결과를 보기 위해 [[http://localhost:4000/][http://localhost:4000/]] 에 접속해보세요.
+결과를 보기 위해 로컬에서 실행하고, [[http://localhost:4000/][http://localhost:4000/]] 에 접속해보세요.
 
 
 .play prog/web-servers.go
