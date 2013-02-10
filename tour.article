@@ -27,9 +27,11 @@ http://golang.org
 - [[http://go-tour-he.appspot.com/][Hebrew — עִבְרִית]]
 - [[http://go-tour-zh.appspot.com/][Chinese — 普通话]]
 - [[http://go-tour-jp.appspot.com/][Japanese — 日本語]]
+- [[http://go-tour-kr.appspot.com/][Korean — 한국어]]
 
 계속 하시려면 Next 버튼을 클릭하거나 PageDown 키를 누르세요.
 
+<<<<<<< HEAD
 * 패키지(Packages)
 
 모든 Go 프로그램은 패키지로 구성됩니다.
@@ -39,12 +41,43 @@ http://golang.org
 이 프로그램은 `"fmt"` 와 `"math"` 경로에 있는 패키지를 사용합니다.
 
 패키지 이름은 경로의 마지막 이름을 사용하는 것이 규칙입니다. 예를 들어 `"path/filepath"` 를 사용한다면 패키지명은 `filepath` 입니다.
+=======
+* Go offline
+
+Go Tour는 인터넷 연결없이 stand-alone 프로그램으로도 사용할 수 있습니다.
+
+stand-alone으로 Go Tour를 이용하면 예제 코드들이 로컬 머신에서 빌드되고 실행되기 때문에 보다 빠릅니다. 그리고 웹버전에는 가능하지 않은 추가적인 연습문제들을 포함하고 있습니다.
+
+이 투어를 로컬에서 실행하기 위해 먼저 [[http://golang.org/doc/install/][Go를 설치]] 하고, [[http://code.google.com/p/go-tour/][gotour]]를 설치하기 위해 [[http://golang.org/cmd/go/][go get]]을 명령을 이용하면 됩니다.
+
+	go get code.google.com/p/go-tour/gotour
+
+그리고 위 결과로 생긴 `gotour` 를 실행하세요.
+
+오프라인 모드를 사용하지 않고 계속 진행하려면, "next" 버튼이나 PageDown 키를 누르세요.
+
+_(언제든_"index"_버튼을_누르면_원하는_특별한_챕터로_이동할_수_있습니다.)_
+
+* 패키지(Packages)
+
+모든 Go 프로그램은 패키지로 구성되어 있습니다.
+
+프로그램은 `main` 패키지에서부터 실행을 시작합니다.
+
+이 프로그램은 `"fmt"`와 `"math"` 패키지를 import 해서 사용하고 있습니다.
+
+관례상, 패키지명은 import할 패키지의 디렉토리 경로에서 제일 마지막 부분이 됩니다.
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 .play prog/packages.go
 
 * 임포트 (Imports)
 
+<<<<<<< HEAD
 이 코드에서는 여러개의 `"package"` 를 소괄호로 감싸서 import를 표현합니다. 아래와 같이 import 문장을 여러번 사용할 수 도 있습니다.
+=======
+옆의 import 코드는 "factored" import 문이라고 하는 중괄호 안에 import 할 패키지를 넣는 방식입니다. 물론 아래처럼 import 문을 각각 따로 해도 됩니다.
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 	import "fmt"
 	import "math"
@@ -53,6 +86,7 @@ http://golang.org
 
 * 익스포트 (Exported names)
 
+<<<<<<< HEAD
 패키지를 Import 하면 패키지에서 export 한 내용을 사용(참조)할 수 있습니다.
 
 Go에서는 Export하기 위해서 첫 글자가 대문자로 시작해야 합니다.
@@ -80,28 +114,71 @@ C, C++, Java 언어와 다르게 매개변수의 타입은 변수명 _뒤에_ �
 두 개 이상의 매개변수가 같은 타입(type)일 때, 같은 타입을 취하는 마지막 매개변수에만 타입을 명시하고 나머지는 생략할 수 있습니다.
 
 예를 들어
+=======
+패지지를 import 한 후에는 그 패키지가 외부로 export 한 것들(메서드나 변수, 상수 등)에 접근할 수 있습니다.
+
+Go에서는 첫 문자가 대문자로 시작하면 그 패키지를 사용하는 곳에서 접근할 수 있는 exported name이 됩니다.
+
+`Foo` 나 `FOO` 는 exported name 입니다. `foo` 는 exported 되지 않은 이름입니다.
+
+코드를 실행해보세요. 그리고 `math.pi`를 `math.Pi`로 바꿔서 다시 실행해보세요.
+
+.play prog/exported-names.go
+
+* 함수(1)
+
+함수는 매개변수(인자)를 가질 수 있습니다.
+
+예를 들어 `add` 라는 함수는 두개의 `int` 타입 매개변수를 받습니다.
+
+매개변수의 타입은 변수명 _뒤에_ 명시합니다.
+
+(타입을 왜 변수명 뒤에 명시하는지에 대한 자세한 내용은 [[http://golang.org/doc/articles/gos_declaration_syntax.html][Go's declaration syntax]]를 참고하시기 바랍니다.)
+
+.play prog/functions.go
+
+* 함수(2)
+
+함수의 두 개 이상의 매개변수가 같은 타입(type)일 때, 같은 타입을 취하는 마지막 매개변수에만 타입을 명시하고 나머지는 생략할 수 있습니다.)
+
+예를 들어,
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 	x int, y int
 
 과 같은 문장은 아래와 같이 표현할 수 있습니다.
 
-	x, y int
+	x, y
 
 .play prog/functions-continued.go
 
+<<<<<<< HEAD
 * 여러 개의 결과 (Multiple results)
 
 하나의 함수는 여러 개의 결과를 반환할 수 있습니다.
 
 예제 코드에서의 함수는 두개의 문자열을 반환합니다.
+=======
+* 여러 개의 결과(Multiple results)
+
+하나의 함수는 여러 개의 결과를 반환할 수 있습니다.
+
+이 함수는 두개의 문자열을 반환합니다.
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 .play prog/multiple-results.go
 
 * 이름이 정해진 결과 (Named results)
 
+<<<<<<< HEAD
 함수는 매개변수를 취합니다. Go에서 함수는 여러 개의 결과를 반환할 수 있습니다. 반환 값에 이름을 부여하면 변수처럼 사용할 수도 있습니다.
 
 결과에 이름을 붙히면, 반환 값을 지정하지 않은 `return` 문장으로 결과의 현재 값을 알아서 반환합니다.
+=======
+함수는 매개변수를 취합니다. Go에서 함수는 여러 개의 "결과 매개변수(result parameters)"를 반환할 수 있습니다. 반환 값들에게 이름을 부여하면 변수처럼 사용할 수 있습니다.
+
+결과 매개변수에 이름을 붙히면, 반환 값을 지정하지 않은 `return` 문장으로 결과의 현재 값을 반환할 수 있습니다.
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 .play prog/named-results.go
 
@@ -123,7 +200,11 @@ C, C++, Java 언어와 다르게 매개변수의 타입은 변수명 _뒤에_ �
 
 * 변수의 짧은 선언
 
+<<<<<<< HEAD
 함수 내에서 `:=` 을 사용하면 `var` 과 명시적인 타입(e.g. int, bool) 을 생략할 수 있습니다.
+=======
+함수 내에서 `:=` 을 `var`과 명시적인 타입(e.g. int, bool) 선언 대신 사용할 수 있습니다.
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 (그러나 함수 밖에서는 `:=` 선언을 사용할 수 없습니다.)
 
@@ -147,6 +228,7 @@ C, C++, Java 언어와 다르게 매개변수의 타입은 변수명 _뒤에_ �
 
 .play prog/numeric-constants.go
 
+<<<<<<< HEAD
 * For (반복문 for)
 
 Go 언어는 반복문이 `for` 밖에 없습니다.
@@ -154,29 +236,49 @@ Go 언어는 반복문이 `for` 밖에 없습니다.
 기본적인 `for` 반복문은 C와 Java 언어와 거의 유사합니다. 다른점은 소괄호 ( )가 필요하지 않다는 것입니다.
 
 하지만 실행문을 위한 중괄호 { } 는 필요합니다.
+=======
+* For(반복문 for)
+
+Go 언어는 반복문이 'for'밖에 없습니다.
+
+기본적인 'for' 반복문은 C와 Java 언어와 거의 유사합니다. 다른점은 소괄호 ( )를 사용하지 않습니다. 하지만 중괄호 { } 는 필요합니다.
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 .play prog/for.go
 
 * For (2)
 
+<<<<<<< HEAD
 C와 Java에서 처럼 조건문만 표현할 수도 있습니다.
+=======
+C와 Java 언어 처럼, 조건문을 제외한 앞 뒤의 문장은 비워도 됩니다.
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 .play prog/for-continued.go
 
 * Go에서 "While" 사용하기
 
+<<<<<<< HEAD
 for(2)에서의 예제에서 처럼 조건문만 표시하면 C에서 `while` 을 사용하듯 Go에서 `for` 를 사용할 수 있습니다.
+=======
+Go에서 세미콜론 ; 을 사용하지 않은 for문은 C에서의 while 반복문을 의미합니다.
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 .play prog/for-is-gos-while.go
 
 * 무한 루프
 
+<<<<<<< HEAD
 for에서 조건문을 생략하면 무한루프를 표현할 수 있습니다.
+=======
+반복문의 조건문을 생략하면 영원히 반복합니다. 무한반복문을 간결하게 표현할 수 있습니다.
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 .play prog/forever.go
 
 * 조건문 (If)
 
+<<<<<<< HEAD
 `if` 문은 C와 Java와 비슷합니다. 조건 표현을 을 위해 `(`)` 는 사용하지 않습니다. 하지만 실행문을 위한 `{`}` 는 반드시 작성해야합니다.
 
 (For문과 비슷하죠?)
@@ -190,11 +292,28 @@ for에서 조건문을 생략하면 무한루프를 표현할 수 있습니다.
 짧은 실행문을 통해 선언된 변수는 `if` _안의 범위(scope)_ 에서 만 사용할 수 있습니다.
 
 (코드의 `pow` 함수에서 `return` 전에 `v` 를 사용해보세요.)
+=======
+`if` 조건문은 C, Java 언어와 비슷합니다. 하지만 소괄호 `(`)`는 사용하지 않습니다. 하지만 `{`}`는 필요합니다.
+
+어디서 들어본 것 같지 않나요?
+
+
+.play prog/if.go
+
+* If와 간단한 명령문의 사용
+
+`for`와 같이 `if`조건문은 조건에 따른 결과를 실행하기 전에 예제의 `v := math.Pow(x,n)`과 같은 짧은 명령문을 사용할 수 있습니다.
+
+`if`문에서 선언된 변수는 `if`문안에서만 사용 할 수 있습니다.
+
+(마지막 `return` 문장의 `lim`을  `v`로 바꿔 보세요.)
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 .play prog/if-with-a-short-statement.go
 
 * If와 else
 
+<<<<<<< HEAD
 `if` 에서 짧은 실행문을 통해 선언된 변수는 `else` 안에서도 사용 가능합니다.
 
 .play prog/if-and-else.go
@@ -202,6 +321,15 @@ for에서 조건문을 생략하면 무한루프를 표현할 수 있습니다.
 * 기본 타입
 
 Go의 기본 타입은 아래와 같습니다.
+=======
+`if`의 간단한 명령문에서 선언된 변수는 `else`의 블럭 안에서도 사용할 수 있습니다.
+
+.play prog/if-and-else.go
+
+* 기본 자료형
+
+Go 언어의 기본 자료형은 다음과 같습니다
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 	bool
 	
@@ -210,10 +338,17 @@ Go의 기본 타입은 아래와 같습니다.
 	int  int8  int16  int32  int64
 	uint uint8 uint16 uint32 uint64 uintptr
 	
+<<<<<<< HEAD
 	byte // uint8의 별칭
 	
 	rune // int32의 별칭
 	     // 유니코드 값을 표
+=======
+	byte // uint8의 다른 이름(alias)
+	
+	rune // int32의 다른 이름(alias)
+	     // 유니코드 코드 포인트 값을 표현합니다. 
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 	
 	float32 float64
 	
@@ -221,6 +356,7 @@ Go의 기본 타입은 아래와 같습니다.
 
 .play prog/basic-types.go
 
+<<<<<<< HEAD
 * 구조체 (Structs)
 
 `struct` 는 필드의 조합입니다.
@@ -252,12 +388,47 @@ Go에는 포인터가 있지만 포인터 연산은 불가능합니다.
 원하는 필드를 `{Name: value}` 문법을 통해 할당할 수 있습니다. (필드의 순서는 상관 없습니다.)
 
 특수 기호 `&` 는 구조체 리터럴의 포인터를 생성합니다.
+=======
+* 구조체
+
+`구조체`는 데이터들의 묶음입니다.
+
+(구조체 안의 데이터들의  `자료형`은 원하는대로 하면 됩니다.)
+
+.play prog/structs.go
+
+* 구조체의 데이터
+
+구조체가 포함한 데이터들은 `.`을 이용하여 사용할 수 있습니다.
+
+.play prog/struct-fields.go
+
+* 포인터
+
+Go언어는 포인터가 있지만, 포인터 연산은 없습니다.
+
+구조체 변수는 구조체 포인터를 이용해서 접근 할 수 있습니다. 포인터를 이용한 구조체의 우회접근은 구조체에도 영향을 미칩니다.
+
+.play prog/pointers.go
+
+* 구조체 리터럴
+
+구조체 리터럴은 구조체의 변수들을 나열하여 새로 할당된 구조체의 값을 나타냅니다.
+
+`Name` 구문을 사용하여 구조체 변수 중 일부를 나열할 수 있습니다. (항목들의 정렬 순서와는 관계가 없습니다.)
+
+특별한 접두어 `&` 를 사용하면 구조체 리터럴에 대한 포인터를 생성할 수 있습니다.
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 .play prog/struct-literals.go
 
 * new 함수
 
+<<<<<<< HEAD
 `new(T)` 는 모든 필드가 0(zero value)이 할당된 `T` 의 포인터를 반환합니다.
+=======
+구문 `new(T)` 는 `T`라는 빈공간을 가진 변수를 할당 하고, `T`의 포인터를 반환합니다. 
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 	var t *T = new(T)
 
@@ -265,8 +436,11 @@ Go에는 포인터가 있지만 포인터 연산은 불가능합니다.
 
 	t := new(T)
 
+위의 변수 t는 `T` 에서 반환된 포인터를 가집니다.
+
 .play prog/the-new-function.go
 
+<<<<<<< HEAD
 * 맵 (Maps)
 
 맵은 값에 키를 지정합니다.
@@ -346,16 +520,95 @@ Go에는 포인터가 있지만 포인터 연산은 불가능합니다.
 	s[lo:lo+1]
 
 는 하나의 요소를 가집니다.
+=======
+* 맵
+
+맵은 키를 값에 대응시킵니다.
+
+맵은 사용 전에 반드시 `new` 가 아닌 `make` 로 만들어져야 합니다; `nil` 맵은 비어있는 상태이고 할당될 수 없습니다.
+
+.play prog/maps.go
+
+* 맵 리터럴
+
+맵 리터럴은 구조체 리터럴과 같지만 키는 필수적입니다.
+
+.play prog/map-literals.go
+
+* 맵 리터럴 (앞에 이어서)
+
+만일 최상위 타입이 단지 타입이름이라면, 해당 리터럴의 구성요소로부터 최상위 타입을 생략할 수 있습니다.
+
+.play prog/map-literals-continued.go
+
+* 맵 변형하기
+
+맵 `m` 에서 하나의 구성요소를 삽입 혹은 갱신하기:
+
+	m[key] = elem
+
+하나의 구성요소를 검색하기:
+
+	elem = m[key]
+
+하나의 구성요소를 삭제하기:
+
+	delete(m, key)
+
+키가 두 값의 할당으로 존재하는지 테스트하기:
+
+	elem, ok = m[key]
+
+만일 `key` 가 `m` 안에 있다면, `ok` 는 `true` 가 됩니다. 그렇지 않다면, `ok` 는 `false` 가 되고 `elem` 은 맵의 구성요소 타입에 대한 초기값이 됩니다.
+
+이와 비슷하게도, 맵에서 읽을 때 만일 키가 없다면 결과값은 맵의 구성요소 타입에 대한 초기값이 됩니다.
+
+.play prog/mutating-maps.go
+
+* 슬라이스
+
+슬라이스는 값들의 배열을 가리키는 동시에 길이를 포함하여 갖습니다.
+
+`[]T`는 원소 `T`의 자료형으로 분할합니다.
+
+.play prog/slices.go
+
+* 슬라이스 자르기
+
+슬라이스는 분할 할 있습니다. 새로운 슬라이스는 같은 배열을 이용하여 만들어 집니다. 
+
+표현식
+
+	s[lo:hi]
+
+슬라이스는 `lo`부터 `hi-1`까지의 원소를 포함합니다. 그러므로
+	
+	s[lo:lo]
+
+는 빈 슬라이스 입니다.
+
+	s[lo:lo+1]
+
+는 하나의 원소를 갖습니다.
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 .play prog/slicing-slices.go
 
 * 슬라이스 만들기
 
+<<<<<<< HEAD
 슬라이스는 `make` 함수로 만들 수 있습니다. 이렇게 생성된 슬라이스는 0을 할당한 배열을 생성하고, 그것을 참조(refer)합니다.
 
 	a := make([]int, 5)  // len(a)=5
 
 `make` 함수의 세번째 매개변수로 최대(capacity)를 제한할 수 있습니다.
+=======
+슬라이스는 `make`함수를 이용하여 만듭니다. 0 으로 할당된 배열과 그 배열을 참조하는 슬라이스를 반환합니다.
+
+	a := make([]int, 5)  // len(a)=5
+
+슬라이스의 용량을 구체적으로 하기 위해 `make`함수에 세번째 인자를 넣습니다.
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 	b := make([]int, 0, 5) // len(b)=0, cap(b)=5
 
@@ -364,6 +617,7 @@ Go에는 포인터가 있지만 포인터 연산은 불가능합니다.
 
 .play prog/making-slices.go
 
+<<<<<<< HEAD
 * Nil 슬라이스
 
 슬라이스의 zero value는 `nil` 입니다.
@@ -431,12 +685,68 @@ nil 슬라이스는 길이와 최대 크기가 0입니다.
 스위치의 각 케이스는 위에서 아래로 평가합니다. 만약 케이스가 성공하면 평가를 마칩니다.
 
 (예를 들어
+=======
+* 비어있는 슬라이스
+
+아무 값도 없는 슬라이스의 값은 `nil`로 표현합니다.
+
+이러한 슬라이스의 길이와 크기와 용량이 모두 0 입니다.
+
+(슬라이스에 대하여 더 알고 싶으면 [[http://golang.org/doc/articles/slices_usage_and_internals.html][Slices: usage and internals]] 이 글을 참고하세요.)
+
+.play prog/nil-slices.go
+
+* 함수 값
+
+함수는 값 입니다.
+(번역자 : 맨 아래 `hypot(3,4)` 의 hypot 함수를 Println함수의 인자값 처럼 사용 하고 있습니다.)
+
+
+.play prog/function-values.go
+
+* 함수 Closure
+
+모든 함수는 Closure 입니다.
+
+`adder` 함수는 closure를 반환합니다. 각각의 closure 는  자신의 `sum` 변수에 바인딩 됩니다.
+
+.play prog/function-closures.go
+
+* 레인지(Range)
+
+`for` 반복문에서의 `range` 구문은 슬라이스나 맵의 원소들에 대한 반복 수행을 합니다.
+
+.play prog/range.go
+
+* 레인지(Range) 2
+
+값을 `_`에 할당함으로써 인덱스나 값을 사용하지 않을 수 있습니다.
+
+인덱스만 원한다면 "`,`value`" 부분을 완전히 제거하면 됩니다.
+
+.play prog/range-continued.go
+
+* 스위치(Switch)
+
+`switch` 가 어떤 건지는 아실 겁니다.
+
+각 case의 코드는 `fallthrough` 구문으로 끝나지 않는 이상, 자동으로 break 합니다.
+
+.play prog/switch.go
+
+* 스위치 동작 순서
+
+스위치의 케이스 조건들은 위에서부터 순서대로 평가되며, 참인 케이스를 찾았을 때 평가를 멈춥니다.
+
+(예를 들어,
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 	switch i {
 	case 0:
 	case f():
 	}
 
+<<<<<<< HEAD
 에서 `i==0` 이라면 `f` 는 실행되지 않습니다)
 
 .play prog/switch-evaluation-order.go
@@ -446,6 +756,17 @@ nil 슬라이스는 길이와 최대 크기가 0입니다.
 스위치에서 조건을 생략하면 " `switch` `true` " 와 같습니다.
 
 만약 긴 if-then-else 를 작성해야 한다면, 이 구조를 사용하면 코드를 깔끔하게 정리할 수 있습니다.
+=======
+는 `i==0` 가 참이면 `f` 는 호출하지 않습니다.)
+
+.play prog/switch-evaluation-order.go
+
+* 조건값 없는 스위치
+
+조건값 없는 스위치는 `switch`true` 와 같습니다.
+
+이런 구조는 긴 if-then-else 문을 좀 더 깔끔하게 작성하려 할 때 유용합니다.
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 .play prog/switch-with-no-condition.go
 
@@ -502,77 +823,83 @@ Find the cube root of 2, just to make sure the algorithm works. There is a [[htt
 
 .play prog/advanced-exercise-complex-cube-roots.go
 
-* Methods and Interfaces
+* 메소드(method)와 인터페이스(interface)
 
-* Methods
+* 메소드
 
-Go does not have classes. However, you can define methods on struct types.
+고에는 클래스가 없습니다. 하지만 메소드를 구조체(struct)에 붙일 수 있습니다.
 
-The _method_receiver_ appears in its own argument list between the `func` keyword and the method name.
+_메소스_리시버(method_receiver)_ 는 `func` 키워드와 메소드의 이름 사이에 인자로 들어갑니다.
 
 .play prog/methods.go
 
-* Methods continued
+* 메소드 계속
 
-In fact, you can define a method on _any_ type you define in your package, not just structs.
+사실 메소드는 구조체(struct) 뿐 아니라 아무 타입(type)에나 붙일 수 있습니다.
 
-You cannot define a method on a type from another package, or on a basic type.
+다른 패키지에 있는 타입이나 기본 타입들에 메소드를 붙이는 것은 불가능합니다.
 
 .play prog/methods-continued.go
 
-* Methods with pointer receivers
+* 포인터 리시버를 가지는 메소드
 
-Methods can be associated with a named type or a pointer to a named type.
+메소드는 이름이 있는 타입 또는 이름이 있는 타입의 포인터와 연결할 수 있습니다.
 
-We just saw two `Abs` methods. One on the `*Vertex` pointer type and the other on the `MyFloat` value type.
+방금 두 개의 `Abs` 메소르를 보았는데, 하나는 `*Vertex`라는 포인터 타입의 메소드고, 다른 하나는 `MyFloat` 값 타입의 메소드 입니다.
 
-There are two reasons to use a pointer receiver. First, to avoid copying the value on each method call (more efficient if the value type is a large struct). Second, so that the method can modify the value that its receiver points to.
+포인터 리시버를 사용하는 이유는 두 가지 입니다. 첫째, 매소드가 호출될 때 마다 값이 복사되는 것(큰 구조체 타입인 경우 값이 복사되는 것은 비효율적이죠)을 방지하기 위함 입니다. 다른 이유는 메소드에서 리시버 포인터가 가르키는 값을 수정하기 위함 입니다.
 
-Try changing the declarations of the `Abs` and `Scale` methods to use `Vertex` as the receiver, instead of `*Vertex`.
+`*Vertex`타입의 리시버 대신 `Vertex`를 사용하도록 메소드 `Abs`와 `Scale`의 선언부분을 바꿔 보세요.
 
-The `Scale` method has no effect when `v` is a `Vertex`. `Scale` mutates `v`. When `v` is a value (non-pointer) type, the method sees a copy of the `Vertex` and cannot mutate the original value.
+`v`를 `Vertex`타입으로 받으면 `Scale` 메소드가 더 이상 동작하지 않습니다. `Scale`은 `v`를 바꾸는데, `v`가 (포인터가 아닌) 값 타입이 때문에 `Vertex`타입인 복사본에 작업을 하기 때문에 원래의 값은 바뀌지 않습니다.
 
 `Abs` works either way. It only reads `v`. It doesn't matter whether it is reading the original value (through a pointer) or a copy of that value.
+`Abs`의 경우는 다릅니다. 여기서는 `v`를 읽기만 하기 때문에, (포인터가 가르키는) 원래의 값이건 복사본이건 상관이 없게 됩니다.
 
 .play prog/methods-with-pointer-receivers.go
 
-* Interfaces
+* 인터페이스
 
-An interface type is defined by a set of methods.
+인터페이스는 메소드의 집합으로 정의됩니다.
 
-A value of interface type can hold any value that implements those methods.
+그 메소드들의 구현되어 있는 타입의 값은 모두 인터페이스 타입의 값이 될 수 있습니다.
 
 .play prog/interfaces.go
 
-* Interfaces are satisfied implicitly
+* 인터페이스 암시적으로 충족됩니다
 
-A type implements an interface by implementing the methods.
+타입이 인터페이스의 메소드들을 구현하면 인터페이스를 구현한 게 됩니다.
 
-_There_is_no_explicit_declaration_of_intent._
 
-Implicit interfaces decouple implementation packages from the packages that define the interfaces: neither depends on the other.
+_이를_위해_명시적으로_선언할_게_없습니다._
 
-It also encourages the definition of precise interfaces, because you don't have to find every implementation and tag it with the new interface name.
+암시적 인터페이스는 인터페이스를 정의한 패키지로 부터 구현 패키지를 분리(decouple)해 줍니다. 다른 의존성 또한 없음은 물론입니다.
 
-[[http://golang.org/pkg/io/][Package io]] defines `Reader` and `Writer`; you don't have to.
+이 특징은 상세하게 인터페이스를 정의하게 독려합니다. 모든 구현을 찾아 새 인터페이스 이름으로 태그할 필요가 없기 때문입니다.
+
+[[http://golang.org/pkg/io/][패키지 io]]에 `Reader`와 `Writer`가 정의되어 있습니다. 따로 정의할 필요가 없습니다.
 
 .play prog/interfaces-are-satisfied-implicitly.go
 
-* Errors
+* 에러(error)
 
-An error is anything that can describe itself as an error string. The idea is captured by the predefined, built-in interface type, `error`, with its single method, `Error`, returning a string:
+에러 문장(string)으로 자신을 표현할 수 있는 것은 모두 에러입니다. 이 아이디어는 문자열(string)을 반환하는 하나의 메소드 `Error`로 구성된 내장 인터페이스 타입 `error`에서 나왔습니다.
 
 	type error interface {
 		Error() string
 	}
 
-The `fmt` package's various print routines automatically know to call the method when asked to print an `error`.
+`fmt`패키지의 다양한 출력 루틴들은 `error`의 출력을 요청받았을 때 자동으로 이 메소드를 호출합니다.
 
 .play prog/errors.go
 
 * 웹 서버
 
+<<<<<<< HEAD
 [[http://golang.org/pkg/net/http/][http 패키지]]는 `http.Handler` 를 구현한 값을 사용하여 HTTP requests를 제공합니다.:
+=======
+[[http://golang.org/pkg/net/http/][Package http]] 는 `http.Handler` 를 구현한 어떠한 값을 사용하여 HTTP 요청(requests)을 제공합니다.
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 	package http
 	
@@ -580,16 +907,22 @@ The `fmt` package's various print routines automatically know to call the method
 		ServeHTTP(w ResponseWriter, r *Request)
 	}
 
+<<<<<<< HEAD
 왼쪽의 코드를 보면 `http.Handler` 를 구현한 `Hello` 타입을 확인할 수 있습니다.
 
 이 코드를 로컬에서 실행하고, [[http://localhost:4000/][http://localhost:4000/]] 에 접속해보세요.
 
+=======
+이 예제에서, `Hello` 라는 타입은 `http.Handler` 를 구현합니다.
+
+인사말을 보기위해서 [[http://localhost:4000/][http://localhost:4000/]] 를 방문하십시오.
+>>>>>>> 3b468899579892146bba792b54c0606b1b8b9e32
 
 .play prog/web-servers.go
 
-* Images
+* 이미지
 
-[[http://golang.org/pkg/image/#Image][Package image]] defines the `Image` interface:
+[[http://golang.org/pkg/image/#Image][Package image]] 는 `Image` 인터페이스를 정의합니다.
 
 	package image
 	
@@ -599,9 +932,9 @@ The `fmt` package's various print routines automatically know to call the method
 		At(x, y int) color.Color
 	}
 
-(See [[http://golang.org/pkg/image/#Image][the documentation]] for all the details.)
+(모든 세부사항에 대한 것은 [[http://golang.org/pkg/image/#Image][이 문서]] 를 참고하십시오.)
 
-Also, `color.Color` and `color.Model` are interfaces, but we'll ignore that by using the predefined implementations `color.RGBA` and `color.RGBAModel`.
+또한, `color.Color` 와 `color.Model` 는 인터페이스이지만, 미리 정의된 구현체인 `color.RGBA` 와 `color.RGBAModel` 을 사용함으로써 그 인터페이스를 무시할 수 있습니다.
 
 .play prog/images.go
 
@@ -646,126 +979,126 @@ For example, you should be able to register handlers using:
 
 .play prog/exercise-http-handlers.go
 
-* Exercise: Images
+* 연습: 이미지
 
-Remember the picture generator you wrote earlier? Let's write another one, but this time it will return an implementation of `image.Image` instead of a slice of data.
+이전의 연습에서 당신이 작성한 그림 생성기를 기억하십니까? 다른 생성기를 만들어봅시다. 하지만 이번에는 데이터의 슬라이스 대신에 `image.Image` 의 구현체를 반환할 것입니다.
 
-Define your own `Image` type, implement [[http://golang.org/pkg/image/#Image][the necessary methods]], and call `pic.ShowImage`.
+당신 자신의 `Image` 타입을 정의하시고, [[http://golang.org/pkg/image/#Image][필수 함수들]] 을 구현하신 다음, `pic.ShowImage` 를 호출하십시오.
 
-`Bounds` should return a `image.Rectangle`, like `image.Rect(0,`0,`w,`h)`.
+`Bounds` 는 `image.Rect(0,`0,`w,`h)` 와 같은 `image.Rectangle` 을 반환해야 합니다.
 
-`ColorModel` should return `color.RGBAModel`.
+`ColorModel` 은 `color.RGBAModel` 을 반환해야 합니다.
 
-`At` should return a color; the value `v` in the last picture generator corresponds to `color.RGBA{v,`v,`255,`255}` in this one.
+`At` 은 하나의 컬러를 반환해야 합니다; 지난 그림 생성기에서 값 `v` 는 `color.RGBA{v,`v,`255,`255}` 와 같습니다.
 
 .play prog/exercise-images.go
 
-* Exercise: Rot13 Reader
+* 연습: Rot13 Reader
 
-A common pattern is an [[http://golang.org/pkg/io/#Reader][io.Reader]] that wraps another `io.Reader`, modifying the stream in some way.
+어떤 식으로든 스트림을 수정하여 다른 `io.Reader` 를 감싸는 [[http://golang.org/pkg/io/#Reader][io.Reader]] 는 흔한 패턴입니다.
 
-For example, the [[http://golang.org/pkg/compress/gzip/#NewReader][gzip.NewReader]] function takes an `io.Reader` (a stream of gzipped data) and returns a `*gzip.Reader` that also implements `io.Reader` (a stream of the decompressed data).
+예컨대, [[http://golang.org/pkg/compress/gzip/#NewReader][gzip.NewReader]] 함수는 `io.Reader` (gzip으로 압축된 데이터의 스트림) 를 가지고, `io.Reader` (압축 해제된 데이터의 스트림) 를 구현한 `*gzip.Reader`를 반환합니다.
 
-Implement a `rot13Reader` that implements `io.Reader` and reads from an `io.Reader`, modifying the stream by applying the [[http://en.wikipedia.org/wiki/ROT13][ROT13]] substitution cipher to all alphabetical characters.
+[[http://en.wikipedia.org/wiki/ROT13][ROT13]] 치환 암호화를 모든 알파벳 문자에 적용함으로써 스트림을 수정하며 `io.Reader` 를 구현하고 `io.Reader` 로 부터 읽는 `rot13Reader` 를 구현하십시오.
 
-The `rot13Reader` type is provided for you.  Make it an `io.Reader` by implementing its `Read` method.
+`rot13Reader` 타입은 당신을 위해 제공됩니다. 이 타입의 `Read` 함수를 구현함으로써 `io.Reader` 을 만들어 보십시오.
 
 .play prog/exercise-rot-reader.go
 
-* Concurrency
+* 동시성
 
-* Goroutines
+* 고루틴(Goroutines)
 
-A _goroutine_ is a lightweight thread managed by the Go runtime.
+_고루틴_은 Go 런타임에 의해 관리되는 경량 쓰레드입니다.
 
 	go f(x, y, z)
 
-starts a new goroutine running
+위의 코드는 새로운 고루틴을 시작시킵니다.
 
 	f(x, y, z)
 
-The evaluation of `f`, `x`, `y`, and `z` happens in the current goroutine and the execution of `f` happens in the new goroutine.
+현재의 고루틴에서 `f`, `x`, `y`, `z`가 평가(evaluation)되고, 새로운 고루틴에서 `f`가 수행(execution)됩니다.
 
-Goroutines run in the same address space, so access to shared memory must be synchronized. The `[[http://golang.org/pkg/sync/][sync]]` package provides useful primitives, although you won't need them much in Go as there are other primitives. (See the next slide.)
+고루틴은 동일한 주소 공간에서 실행되므로, 공유되는 자원으로의 접근은 반드시 동기화 되어야 합니다. `[[http://golang.org/pkg/sync/][sync]]` 패키지가 이를 위해 유용한 기본 기능을 제공합니다. Go 에서는 그외에도 다양한 기본 기능을 제공하니 크게 필요치 않을 테지만요. (다음 슬라이드를 보세요.) 
 
 .play prog/goroutines.go
 
-* Channels
+* 채널(Channels)
 
-Channels are a typed conduit through which you can send and receive values with the channel operator, `<-`.
+채널은 채널 연산자 `<-` 를 이용해 값을 주고 받을 수 있는, 타입이 존재하는 파이프입니다.
 
-	ch <- v    // Send v to channel ch.
-	v := <-ch  // Receive from ch, and
-	           // assign value to v.
+	ch <- v    // v 를 ch로 보냅니다.
+	v := <-ch  // ch로부터 값을 받아서
+	           // v 로 넘깁니다.
 
-(The data flows in the direction of the arrow.)
+(데이터가 화살표 방향에 따라 흐릅니다.)
 
-Like maps and slices, channels must be created before use:
+맵이나 슬라이스처럼, 채널은 사용되기 전에 생성되어야 합니다:
 
 	ch := make(chan int)
 
-By default, sends and receives block until the other side is ready. This allows goroutines to synchronize without explicit locks or condition variables.
+기본적으로, 송/수신은 상대편이 준비될 때까지 블록됩니다. 이런 특성이 고루틴이 명시적인 락이나 조건 없이도 동기화 될 수 있도록 돕습니다.
 
 .play prog/channels.go
 
-* Buffered Channels
+* 버퍼링되는 채널
 
-Channels can be _buffered_.  Provide the buffer length as the second argument to `make` to initialize a buffered channel:
+채널은 _버퍼링_될 수 있습니다. `make`에 두번째 인자로 버퍼 용량을 넣음으로써 해당 용량만큼 버퍼링되는 채널을 생성할 수 있습니다:
 
 	ch := make(chan int, 100)
 
-Sends to a buffered channel block only when the buffer is full. Receives block when the buffer is empty.
+버퍼링되는 채널로의 송신은 버퍼가 꽉 찰 때까지 블록됩니다. 수신측은 버퍼가 빌 때 블록됩니다.
 
-Modify the example to overfill the buffer and see what happens.
+예제를 수정해서 버퍼를 넘치게 해보고 어떻게 동작하는지 확인해 보세요.
 
 .play prog/buffered-channels.go
 
-* Range and Close
+* Range와 Close
 
-A sender can `close` a channel to indicate that no more values will be sent. Receivers can test whether a channel has been closed by assigning a second parameter to the receive expression: after
+데이터 송신측은 더이상 보낼 값이 없다는 것을 알리기 위해 채널을 `close`할 수 있습니다. 수신측은 다음과 같이 수신 코드에 두번째 인자를 줌으로써 채널이 닫혔는지 테스트 할 수 있습니다.
 
 	v, ok := <-ch
 
-`ok` is `false` if there are no more values to receive and the channel is closed.
+채널이 이미 닫혔고 더이상 받을 값이 없다면 `ok`는 `false`가 됩니다.
 
-The loop `for`i`:=`range`c` receives values from the channel repeatedly until it is closed.
+`for`i`:=`range`c` 반복문은 채널이 닫힐 때까지 계속해서 값을 받습니다.
 
-*Note:* Only the sender should close a channel, never the receiver. Sending on a closed channel will cause a panic.
+*주의:* 송신측만 채널을 닫을 수 있습니다. 수신측에선 불가능합니다. 이미 닫힌 채널에 데이터를 보내면 패닉이 일어납니다.
 
-*Another*note*: Channels aren't like files; you don't usually need to close them. Closing is only necessary when the receiver must be told there are no more values coming, such as to terminate a `range` loop.
+*또하나의*주의*: 채널은 파일과 다릅니다; 항상 닫을 필요는 없습니다. 채널을 닫는 행위는 오로지 수신측에게 더이상 보낼 값이 없다고 말해야 할때만 행해지면 됩니다. `range` 루프를 종료시켜야 할 때처럼요.
 
 .play prog/range-and-close.go
 
-* Select
+* 셀렉트(Select)
 
-The `select` statement lets a goroutine wait on multiple communication operations.
+`select` 구문은 고루틴이 다수의 통신 동작으로부터 수행 준비를 기다릴 수 있게 합니다.
 
-A `select` blocks until one of its cases can run, then it executes that case.  It chooses one at random if multiple are ready.
+`select`는 `case`구문으로 받는 통신 동작들 중 하나가 수행될 수 있을 때까지 수행을 블록합니다. 다수의 채널이 동시에 준비되면 그 중 하나를 무작위로 선택합니다.
 
 .play prog/select.go
 
-* Default Selection
+* 셀렉트의 디폴트(default) 케이스
 
-The `default` case in a `select` is run if no other case is ready.
+`select`의 `default` 케이스는 현재 수행 준비가 완료된 케이스가 없을 때 수행됩니다.
 
-Use a `default` case to try a send or receive without blocking:
+블로킹 없이(비동기적인) 송/수신을 하고자 할 때 `default` 케이스를 사용하세요.
 
 	select {
 	case i := <-c:
-		// use i
+		// i를 사용
 	default:
-		// receiving from c would block
+		// c로부터의 수신은 블록된 상태
 	}
 
 .play prog/default-selection.go
 
-* Exercise: Equivalent Binary Trees
+* 연습: 동등한 이진 트리
 
-There can be many different binary trees with the same sequence of values stored at the leaves. For example, here are two binary trees storing the sequence 1, 1, 2, 3, 5, 8, 13.
+노드(leaf)들에 있는 값들의 정렬 순열는 같지만 생김새가 다른 이진트리가 있을 수 있습니다. 예를들어, 다음 그림의 두 이진 트리를 정렬 순열는 1, 1, 2, 3, 5, 8, 13 으로 같습니다.
 
-A function to check whether two binary trees store the same sequence is quite complex in most languages. We'll use Go's concurrency and channels to write a simple solution.
+대부분의 프로그래밍 언어에서 두 이진 트리가 같은 순열인지를 검사하는 함수의 구현은 복잡합니다. 이제 고의 동시성과 채널을 사용한 단순한 방법으로 해결해 봅시다.
 
-This example uses the `tree` package, which defines the type:
+이 예제는 다음의 `Tree`구조체가 정의된 `tree`패키지를 사용합니다.
 
 	type Tree struct {
 		Left  *Tree
@@ -773,25 +1106,25 @@ This example uses the `tree` package, which defines the type:
 		Right *Tree
 	}
 
-* Exercise: Equivalent Binary Trees
+* 연습: 동등한 이진 트리
 
-*1.* Implement the `Walk` function.
+*1.* `Walk` 함수를 구현하세요.
 
-*2.* Test the `Walk` function.
+*2.* `Walk` 함수를 테스트 해 보세요.
 
-The function `tree.New(k)` constructs a randomly-structured binary tree holding the values `k`, `2k`, `3k`, ..., `10k`.
+함수 `tree.New(k)`는 `k`, `2k`, `3k`, ..., `10k`의 값을 가지는, 무작위로 구성된 이진트리를 만들어 냅니다.
 
-Create a new channel `ch` and kick off the walker:
+채널 `ch`를 만들고, 작성한 `Walk`함수의 인자로 넣어 줍니다.
 
 	go Walk(tree.New(1), ch)
 
-Then read and print 10 values from the channel. It should be the numbers 1, 2, 3, ..., 10.
+이제 채널에서 10개의 값을 읽어 봅니다. 읽힌 값은 1, 2, 3, ..., 10 이어야 합니다.
 
-*3.* Implement the `Same` function using `Walk` to determine whether `t1` and `t2` store the same values.
+*3.* `Walk` 함수를 사용해 두 트리 `t1`과 `t2`이 값은 값들을 가지고 있는지 비교하는 `Same`함수를 구현해 보세요.
 
-*4.* Test the `Same` function.
+*4.* `Same` 함수를 테스트 해 보세요.
 
-`Same(tree.New(1),`tree.New(1))` should return true, and `Same(tree.New(1),`tree.New(2))` should return false.
+`Same(tree.New(1),`tree.New(1))`의 수행결과는 true, `Same(tree.New(1),`tree.New(2))`의 수행 결과는 false 이어야 합니다.
 
 .play prog/exercise-equivalent-binary-trees.go
 
@@ -819,3 +1152,4 @@ Then read and print 10 values from the channel. It should be the numbers 1, 2, 3
 
 공식 사이트 [[http://golang.org][golang.org]]를 방문해 더 살펴보세요.
 
+번역: [[https://developers.google.com/groups/chapter/112714242728066184635/][한국 Go 언어 커뮤니티(GDG Golang Korea)]]
