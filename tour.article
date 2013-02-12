@@ -635,31 +635,32 @@ _이를_위해_명시적으로_선언할_게_없습니다._
 
 .play prog/images.go
 
-* Exercise: Errors
+* 연습: 에러
 
-Copy your `Sqrt` function from the earlier exercises and modify it to return an `error` value.
+당신의 `Sqrt` 함수를 이전 연습에서 복사하고 `error` 값을 반환하도록 수정하십시오.
 
-`Sqrt` should return a non-nil error value when given a negative number, as it doesn't support complex numbers.
+`Sqrt` 함수는 복소수를 지원하지 않기 때문에, 음수가 주어지면 `nil` 이 아닌 에러 값을 반환해야 합니다.
 
-Create a new type
+새로운 타입을 만드십시오.
 
 	type ErrNegativeSqrt float64
 
 and make it an `error` by giving it a
+그리고 아래 메소드를 구현함으로써 그 타입이 `error` 가 되게 하십시오.
 
 	func (e ErrNegativeSqrt) Error() string
 
-method such that `ErrNegativeSqrt(-2).Error()` returns `"cannot`Sqrt`negative`number:`-2"`.
+이는 `ErrNegativeSqrt(-2).Error()` 가 `"cannot`Sqrt`negative`number:`-2"` 를 반환하는 그러한 메소드입니다.
 
-*Note:* a call to `fmt.Print(e)` inside the `Error` method will send the program into an infinite loop. You can avoid this by converting `e` first: `fmt.Print(float64(e))`. Why?
+*Note:* `Error` 메소드 내에서 `fmt.Print(e)` 를 호출하면 이 프로그램을 무한루프에 빠질 것입니다. `e` 를 바꿈으로써 이 문제를 피할 수 있습니다. 왜 그럴까요?
 
-Change your `Sqrt` function to return an `ErrNegativeSqrt` value when given a negative number.
+음수가 주어졌을 때 `ErrNegativeSqrt` 값을 반환하도록 당신의 `Sqrt` 함수를 바꾸십시오.
 
 .play prog/exercise-errors.go
 
-* Exercise: HTTP Handlers
+* 연습: HTTP 핸들러
 
-Implement the following types and define ServeHTTP methods on them. Register them to handle specific paths in your web server.
+아래 나오는 타입을 구현하고 그 타입의 ServeHTTP 메소드를 정의하십시오. 그 메소드를 당신의 웹 서버에서 특정 경로를 처리할 수 있도록 등록하십시오.
 
 	type String string
 	
@@ -669,7 +670,7 @@ Implement the following types and define ServeHTTP methods on them. Register the
 		Who      string
 	}
 
-For example, you should be able to register handlers using:
+예컨대, 당신은 아래와 같이 핸들러를 등록할 수 있어야 합니다.
 
 	http.Handle("/string", String("I'm a frayed knot."))
 	http.Handle("/struct", &Struct{"Hello", ":", "Gophers!"})
@@ -849,4 +850,4 @@ _고루틴_은 Go 런타임에 의해 관리되는 경량 쓰레드입니다.
 
 공식 사이트 [[http://golang.org][golang.org]]를 방문해 더 살펴보세요.
 
-번역: [[https://developers.google.com/groups/chapter/112714242728066184635/][한국 Go 언어 커뮤니티(GDG Golang Korea)]]
+번역: [[https://developers.google.com/groups/chapter/112714242728066184635/][한국 Go 언어 커뮤니티(GDG Korea Golang)]]
