@@ -78,7 +78,7 @@ Go에서는 첫 문자가 대문자로 시작하면 그 패키지를 사용하�
 
 예를 들어 `Foo` 와 `FOO` 는 외부에서 참조할 수 있지만 `foo` 는 참조 할 수 없습니다.
 
-예제를 실행해보세요. 애러가 발생한다면 `math.pi` 를 `math.Pi` 로 변경 해보세요.
+예제를 실행해보세요. 에러가 발생한다면 `math.pi` 를 `math.Pi` 로 변경 해보세요.
 
 .play prog/exported-names.go
 
@@ -208,7 +208,7 @@ for에서 조건문을 생략하면 무한 루프를 간단하게 표현할 수 
 
 예제에서는 조건을 비교하기 전에 `v := math.Pow(x,n)` 을 실행했습니다.
 
-짧은 실행문을 통해 선언된 변수는 `if` _안의 범위(scope)_ 에서 만 사용할 수 있습니다.
+짧은 실행문을 통해 선언된 변수는 `if` _안쪽_ _범위(scope)_ 에서 만 사용할 수 있습니다.
 
 (예제 코드의 `pow` 함수에서 `return` 전에 `v` 를 사용해보세요.)
 
@@ -220,11 +220,26 @@ for에서 조건문을 생략하면 무한 루프를 간단하게 표현할 수 
 
 .play prog/if-and-else.go
 
+* Exercise: Loops and Functions
+
+As a simple way to play with functions and loops, implement the square root function using Newton's method.
+
+In this case, Newton's method is to approximate `Sqrt(x)` by picking a starting point _z_ and then repeating:
+
+To begin with, just repeat that calculation 10 times and see how close you get to the answer for various values (1, 2, 3, ...).
+
+Next, change the loop condition to stop once the value has stopped changing (or only changes by a very small delta). See if that's more or fewer iterations. How close are you to the [[http://golang.org/pkg/math/#Sqrt][math.Sqrt]]?
+
+Hint: to declare and initialize a floating point value, give it floating point syntax or use a conversion:
+
+	z := float64(1)
+	z := 1.0
+
+.play prog/exercise-loops-and-functions.go
+
 * 기본 자료형
 
 Go의 기본 자료형은 아래와 같습니다.
-
-* 기본 자료형
 
 	bool
 	
@@ -280,9 +295,9 @@ Go에는 포인터가 있지만 포인터 연산은 불가능합니다.
 
 * new 함수
 
-`new(T)` 는 모든 필드가 _0(zero value)_ 이 할당된 `T` 타입의 포인터를 반환합니다.
+`new(T)` 는 모든 필드가 _0(zero_ _value)_ 이 할당된 `T` 타입의 포인터를 반환합니다.
 
-( _zero value_ 는 숫자 타입에서는 `0` , 참조 타입에서는 `nil` 을 뜻합니다 )
+( _zero_ _value_ 는 숫자 타입에서는 `0` , 참조 타입에서는 `nil` 을 뜻합니다 )
 
 	var t *T = new(T)
 
@@ -293,60 +308,6 @@ Go에는 포인터가 있지만 포인터 연산은 불가능합니다.
 위의 변수 t는 `T` 에서 반환된 포인터를 가집니다.
 
 .play prog/the-new-function.go
-
-* 맵 (Maps)
-
-맵은 값에 키를 지정합니다.
-
-맵은 반드시 사용하기 전에 `make` 를 명시해야합니다. (주의: `new` 가 아닙니다)
-
-`make`를 수행하지 않은 `nil` 에는 값을 할당할 수 없습니다.
-
-.play prog/maps.go
-
-* 맵 리터럴 (Map literals)
-
-맵 리터럴은 구조체 리터럴과 비슷하지만 `key` 를 반드시 지정해야 합니다.
-
-.play prog/map-literals.go
-
-* 맵 리터럴 (2)
-
-만약 가장 상위의 타입이 타입명이라면 리터럴에서 타입명을 생략해도 됩니다.
-
-	"Bell Labs": {40.68433, -74.39967}
-
-또는
-
-	"Bell Labs": Vertex{40.68433, -74.39967}
-
-는 같은 표현입니다.
-
-.play prog/map-literals-continued.go
-
-* 맵 다루기 (Mutating Maps)
-
-맵 `m` 의 요소를 삽입하거나 수정하기:
-
-	m[key] = elem
-
-요소 값 가져오기:
-
-	elem = m[key]
-
-요소 지우기:
-
-	delete(m, key)
-
-키의 존재 여부 확인하기:
-
-	elem, ok = m[key]
-
-위의 `ok` 의 값은 `m` 에 `key` 가 존재한다면 `true` 존재하지 않으면 `false`, `elem` 은 타입에 따라 _0(zero value)_ 가 됩니다.
-
-이처럼 `map` 을 읽을 때, 존재하지 않는 `key` 의 반환 값은 타입에 맞는 _zero value_ 입니다.
-
-.play prog/mutating-maps.go
 
 * 슬라이스 (Slices)
 
@@ -401,6 +362,106 @@ nil 슬라이스는 길이와 최대 크기가 0입니다.
 
 .play prog/nil-slices.go
 
+* 레인지 (Range, 범위)
+
+`for` 반복문에서 `range` 를 사용하면 슬라이스나 맵을 순회(iterates)할 수 있습니다.
+
+.play prog/range.go
+
+* 레인지 (2)
+
+`_` 를 이용해서 인덱스(index)나 값(value)를 무시할 수 있습니다.
+
+만약 인덱스만 필요하다면 “ `, value` ” 부분을 다 제거하면 됩니다.
+
+	for i, value := range pow {
+		pow[i] = 1 << uint(i)
+	}
+
+에서
+
+	for i := range pow {
+		pow[i] = 1 << uint(i)
+	}
+
+처럼 사용할 수 있습니다.
+
+.play prog/range-continued.go
+
+* Exercise: Slices
+
+Implement `Pic`. It should return a slice of length `dy`, each element of which is a slice of `dx` 8-bit unsigned integers. When you run the program, it will display your picture, interpreting the integers as grayscale (well, bluescale) values.
+
+The choice of image is up to you. Interesting functions include `x^y`, `(x+y)/2`, and `x*y`.
+
+(You need to use a loop to allocate each `[]uint8` inside the `[][]uint8`.)
+
+(Use `uint8(intValue)` to convert between types.)
+
+.play prog/exercise-slices.go
+
+* 맵 (Maps)
+
+맵은 값에 키를 지정합니다.
+
+맵은 반드시 사용하기 전에 `make` 를 명시해야합니다. (주의: `new` 가 아닙니다)
+
+`make` 를 수행하지 않은 `nil` 에는 값을 할당할 수 없습니다.
+
+.play prog/maps.go
+
+* 맵 리터럴 (Map literals)
+
+맵 리터럴은 구조체 리터럴과 비슷하지만 `key` 를 반드시 지정해야 합니다.
+
+.play prog/map-literals.go
+
+* 맵 리터럴 (2)
+
+만약 가장 상위의 타입이 타입명이라면 리터럴에서 타입명을 생략해도 됩니다.
+
+	"Bell Labs": {40.68433, -74.39967}
+
+또는
+
+	"Bell Labs": Vertex{40.68433, -74.39967}
+
+는 같은 표현입니다.
+
+.play prog/map-literals-continued.go
+
+* 맵 다루기 (Mutating Maps)
+
+맵 `m` 의 요소를 삽입하거나 수정하기:
+
+	m[key] = elem
+
+요소 값 가져오기:
+
+	elem = m[key]
+
+요소 지우기:
+
+	delete(m, key)
+
+키의 존재 여부 확인하기:
+
+	elem, ok = m[key]
+
+위의 `ok` 의 값은 `m` 에 `key` 가 존재한다면 `true` 존재하지 않으면 `false`, `elem` 은 타입에 따라 _0(zero_ _value)_ 가 됩니다.
+
+이처럼 `map` 을 읽을 때, 존재하지 않는 `key` 의 반환 값은 타입에 맞는 _zero_ _value_ 입니다.
+
+.play prog/mutating-maps.go
+
+* Exercise: Maps
+
+Implement `WordCount`.  It should return a map of the counts of each “word” in the string `s`. The `wc.Test` function runs a test suite against the provided function and prints success or failure.
+
+You might find [[http://golang.org/pkg/strings/#Fields][strings.Fields]] helpful.
+
+.play prog/exercise-maps.go
+
 * 함수 값 (Function values)
 
 함수도 값 입니다.
@@ -419,31 +480,13 @@ nil 슬라이스는 길이와 최대 크기가 0입니다.
 
 .play prog/function-closures.go
 
-* 레인지 (Range, 범위)
+* Exercise: Fibonacci closure
 
-`for` 반복문에서 `range` 를 사용하면 슬라이스나 맵을 순회(iterates)할 수 있습니다.
+Let's have some fun with functions.
 
-.play prog/range.go
+Implement a `fibonacci` function that returns a function (a closure) that returns successive fibonacci numbers.
 
-* 레인지 (2)
-
-`_` 를 이용해서 인덱스(index)나 값(value)를 무시할 수 있습니다.
-
-만약 인덱스만 필요하다면 “ `, value` ” 부분을 다 제거하면 됩니다.
-
-	for i, value := range pow {
-        pow[i] = 1 << uint(i)
-    }
-
-에서
-
-	for i := range pow {
-        pow[i] = 1 << uint(i)
-    }
-
-처럼 사용할 수 있습니다.
-
-.play prog/range-continued.go
+.play prog/exercise-fibonacci-closure.go
 
 * 스위치 (Switch)
 
@@ -478,51 +521,6 @@ nil 슬라이스는 길이와 최대 크기가 0입니다.
 
 .play prog/switch-with-no-condition.go
 
-* Exercise: Loops and Functions
-
-As a simple way to play with functions and loops, implement the square root function using Newton's method.
-
-In this case, Newton's method is to approximate `Sqrt(x)` by picking a starting point _z_ and then repeating:
-
-To begin with, just repeat that calculation 10 times and see how close you get to the answer for various values (1, 2, 3, ...).
-
-Next, change the loop condition to stop once the value has stopped changing (or only changes by a very small delta). See if that's more or fewer iterations. How close are you to the [[http://golang.org/pkg/math/#Sqrt][math.Sqrt]]?
-
-Hint: to declare and initialize a floating point value, give it floating point syntax or use a conversion:
-
-	z := float64(1)
-	z := 1.0
-
-.play prog/exercise-loops-and-functions.go
-
-* Exercise: Maps
-
-Implement `WordCount`.  It should return a map of the counts of each “word” in the string `s`. The `wc.Test` function runs a test suite against the provided function and prints success or failure.
-
-You might find [[http://golang.org/pkg/strings/#Fields][strings.Fields]] helpful.
-
-.play prog/exercise-maps.go
-
-* Exercise: Slices
-
-Implement `Pic`. It should return a slice of length `dy`, each element of which is a slice of `dx` 8-bit unsigned integers. When you run the program, it will display your picture, interpreting the integers as grayscale (well, bluescale) values.
-
-The choice of image is up to you. Interesting functions include `x^y`, `(x+y)/2`, and `x*y`.
-
-(You need to use a loop to allocate each `[]uint8` inside the `[][]uint8`.)
-
-(Use `uint8(intValue)` to convert between types.)
-
-.play prog/exercise-slices.go
-
-* Exercise: Fibonacci closure
-
-Let's have some fun with functions.
-
-Implement a `fibonacci` function that returns a function (a closure) that returns successive fibonacci numbers.
-
-.play prog/exercise-fibonacci-closure.go
-
 * Advanced Exercise: Complex cube roots
 
 Let's explore Go's built-in support for complex numbers via the `complex64` and `complex128` types. For cube roots, Newton's method amounts to repeating:
@@ -531,9 +529,9 @@ Find the cube root of 2, just to make sure the algorithm works. There is a [[htt
 
 .play prog/advanced-exercise-complex-cube-roots.go
 
-* 메소드(method)와 인터페이스(interface)
+* 메소드와 인터페이스
 
-* 메소드
+* 메소드 (Methods)
 
 고에는 클래스가 없습니다. 하지만 메소드를 구조체(struct)에 붙일 수 있습니다.
 
@@ -541,7 +539,7 @@ _메소스_리시버(method_receiver)_ 는 `func` 키워드와 메소드의 이�
 
 .play prog/methods.go
 
-* 메소드 계속
+* 메소드 (2)
 
 사실 메소드는 구조체(struct) 뿐 아니라 아무 타입(type)에나 붙일 수 있습니다.
 
@@ -566,7 +564,7 @@ _메소스_리시버(method_receiver)_ 는 `func` 키워드와 메소드의 이�
 
 .play prog/methods-with-pointer-receivers.go
 
-* 인터페이스
+* 인터페이스 (Interface)
 
 인터페이스는 메소드의 집합으로 정의됩니다.
 
@@ -601,40 +599,6 @@ _이를_위해_명시적으로_선언할_게_없습니다._
 
 .play prog/errors.go
 
-* 웹 서버
-
-[[http://golang.org/pkg/net/http/][Package http]] 는 `http.Handler` 를 구현한 어떠 값을 사용하여 HTTP 요청(requests)을 제공합니다.
-
-	package http
-	
-	type Handler interface {
-		ServeHTTP(w ResponseWriter, r *Request)
-	}
-
-이 예제에서, `Hello` 라는 타입은 `http.Handler` 를 구현합니다.
-
-이 코드를 로컬에서 실행하고, [[http://localhost:4000/][http://localhost:4000/]] 에 접속해보세요.
-
-.play prog/web-servers.go
-
-* 이미지
-
-[[http://golang.org/pkg/image/#Image][Package image]] 는 `Image` 인터페이스를 정의합니다.
-
-	package image
-	
-	type Image interface {
-		ColorModel() color.Model
-		Bounds() Rectangle
-		At(x, y int) color.Color
-	}
-
-(모든 세부사항에 대한 것은 [[http://golang.org/pkg/image/#Image][이 문서]] 를 참고하십시오.)
-
-또한, `color.Color` 와 `color.Model` 는 인터페이스이지만, 미리 정의된 구현체인 `color.RGBA` 와 `color.RGBAModel` 을 사용함으로써 그 인터페이스를 무시할 수 있습니다.
-
-.play prog/images.go
-
 * Exercise: Errors
 
 Copy your `Sqrt` function from the earlier exercises and modify it to return an `error` value.
@@ -657,6 +621,22 @@ Change your `Sqrt` function to return an `ErrNegativeSqrt` value when given a ne
 
 .play prog/exercise-errors.go
 
+* 웹 서버
+
+[[http://golang.org/pkg/net/http/][Package http]] 는 `http.Handler` 를 구현한 어떠 값을 사용하여 HTTP 요청(requests)을 제공합니다.
+
+	package http
+	
+	type Handler interface {
+		ServeHTTP(w ResponseWriter, r *Request)
+	}
+
+이 예제에서, `Hello` 라는 타입은 `http.Handler` 를 구현합니다.
+
+이 코드를 로컬에서 실행하고, [[http://localhost:4000/][http://localhost:4000/]] 에 접속해보세요.
+
+.play prog/web-servers.go
+
 * Exercise: HTTP Handlers
 
 Implement the following types and define ServeHTTP methods on them. Register them to handle specific paths in your web server.
@@ -675,6 +655,24 @@ For example, you should be able to register handlers using:
 	http.Handle("/struct", &Struct{"Hello", ":", "Gophers!"})
 
 .play prog/exercise-http-handlers.go
+
+* 이미지
+
+[[http://golang.org/pkg/image/#Image][Package image]] 는 `Image` 인터페이스를 정의합니다.
+
+	package image
+	
+	type Image interface {
+		ColorModel() color.Model
+		Bounds() Rectangle
+		At(x, y int) color.Color
+	}
+
+(모든 세부사항에 대한 것은 [[http://golang.org/pkg/image/#Image][이 문서]] 를 참고하십시오.)
+
+또한, `color.Color` 와 `color.Model` 는 인터페이스이지만, 미리 정의된 구현체인 `color.RGBA` 와 `color.RGBAModel` 을 사용함으로써 그 인터페이스를 무시할 수 있습니다.
+
+.play prog/images.go
 
 * 연습: 이미지
 
