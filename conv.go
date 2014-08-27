@@ -11,7 +11,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"code.google.com/p/go.talks/pkg/present"
+	"code.google.com/p/go.tools/present"
 )
 
 func init() {

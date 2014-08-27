@@ -3,7 +3,7 @@
 Go Tour(Korean) Web: [http://go-tour-kr.appspot.com](http://go-tour-kr.appspot.com)  
 Go Tour(Korean) GitHub: [http://github.com/golanger/go-tour-kr](http://github.com/golanger/go-tour-kr)  
 
-tour.article 파일은 Go의 present 패키지를 이용해서 html로 변환해줄 수 있는 원본 파일입니다. 이 파일의 문법은 [present package](http://godoc.org/code.google.com/p/go.talks/pkg/present)를 참고해주세요.
+tour.article 파일은 Go의 present 패키지를 이용해서 html로 변환해줄 수 있는 원본 파일입니다. 이 파일의 문법은 [present package](http://godoc.org/code.google.com/p/go.tools/present)를 참고해주세요.
 
 
 ### 1. Step 1: tour.article 파일 번역
