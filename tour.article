@@ -120,7 +120,7 @@ C, C++, Java 언어와 다르게 매개변수의 타입은 변수명 _뒤에_ �
 
 함수는 매개변수를 취합니다. Go에서 함수는 여러 개의 결과를 반환할 수 있습니다. 반환 값에 이름을 부여하면 변수처럼 사용할 수도 있습니다.
 
-결과에 이름을 붙히면, 반환 값을 지정하지 않은 `return` 문장으로 결과의 현재 값을 알아서 반환합니다.
+결과에 이름을 붙이면, 반환 값을 지정하지 않은 `return` 문장으로 결과의 현재 값을 알아서 반환합니다.
 
 .play prog/named-results.go
 
@@ -196,7 +196,7 @@ for에서 조건문을 생략하면 무한 루프를 간단하게 표현할 수 
 
 * 조건문 (If)
 
-`if` 문은 C와 Java와 비슷합니다. 조건 표현을 을 위해 `(`)` 는 사용하지 않습니다. 하지만 실행문을 위한 `{`}` 는 반드시 작성해야합니다.
+`if` 문은 C와 Java와 비슷합니다. 조건 표현을 위해 `(`)` 는 사용하지 않습니다. 하지만 실행문을 위한 `{`}` 는 반드시 작성해야합니다.
 
 (For문과 비슷하죠?)
 
@@ -623,7 +623,7 @@ and make it an `error` by giving it a
 
 * 웹 서버
 
-[[http://golang.org/pkg/net/http/][Package http]] 는 `http.Handler` 를 구현한 어떠 값을 사용하여 HTTP 요청(requests)을 제공합니다.
+[[http://golang.org/pkg/net/http/][Package http]] 는 `http.Handler` 를 구현한 어떤 값을 사용하여 HTTP 요청(requests)을 제공합니다.
 
 	package http
 	
